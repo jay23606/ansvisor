@@ -33,6 +33,7 @@
         "your language",
         "new since your last visit",
         "closed this week",
+        "refreshed this week",
         "deleted actions",
         "missing actions"
       ],
@@ -51,7 +52,7 @@
         "oldest first"
       ],
       "plan": "all",
-      "updated": "2026-11-25",
+      "updated": "2026-11-29",
       "sections": [
         {
           "heading": null,
@@ -79,7 +80,7 @@
         },
         {
           "heading": "New and closed actions",
-          "text": "Above the list, a short line reads like \"55 open · 12 closed this week · 3 new since your last visit\". The open count doesn't always grow: a new finding on a subject with an open action joins that action, and completed or dismissed actions leave the count.\n\n- **New**: a mark beside the title of each action created since your last visit to the list, on this browser. It shows for the whole visit and is gone on the next one. An older action that a new signal updated moves to the top without it.\n- **Closed this week**: actions completed or dismissed in the last 7 days. Click it to list them; **Clear filters** goes back.\n\nActions are never removed on their own. Closed ones stay under **Status: All**, with what happened in each one's **History**."
+          "text": "Above the list, a line reads like \"55 open · 12 closed this week · 3 new since your last visit · 5 refreshed this week\". The open count doesn't always grow: a new finding on the subject of an open action joins it, closed actions leave the count, and a refreshed action is replaced by its new one.\n\n- **New**: a mark beside each action created since your last visit on this browser, gone on the next one.\n- **Closed this week**: completed or dismissed in the last 7 days. Click it to list them; **Clear filters** goes back.\n- **Refreshed this week**: untouched for 30 days and replaced by a new action built from fresh data. Not counted as closed; its **History** names the new one.\n\nActions are never removed on their own. Closed ones stay under **Status: All**, with what happened in each one's **History**."
         },
         {
           "heading": "Action codes",
@@ -107,7 +108,7 @@
         },
         {
           "heading": "Inside an action",
-          "text": "An open action's tabs:\n\n- **Overview**: **Why this priority?**, with how sure the score is (low, medium or high confidence, and why, such as one kind of finding from one source), **Why this action?** with the signals behind it, the **Goal**, with **Done when** (what done looks like, with a date) and the linked **KPIs**.\n- **Affected**: the prompts, pages, topics, competitors or platforms it is about, with each prompt's demand.\n- **Tasks**: the work, step by step, with how many are done, such as **Tasks 2/5**.\n- **Signals**: the evidence. Click one to open it on the Signals tab.\n- **History**: every change, from status and assignee changes to tasks updated or sent.\n\nThe title's count, **Why this action?**, the **Goal**'s \"5 of 7 prompts\" and the AI searches a month all count the same prompts as the **Affected** tab, so the monthly searches are the sum of its rows."
+          "text": "An open action's tabs:\n\n- **Overview**: **Why this priority?**, with how many kinds of evidence agree (Single source, Confirmed or Well confirmed, and why, such as one kind of finding from one source), **Why this action?** with the signals behind it, the **Goal**, with **Done when** (what done looks like, with a date) and the linked **KPIs**.\n- **Affected**: the prompts, pages, topics, competitors or platforms it is about, with each prompt's demand.\n- **Tasks**: the work, step by step, with how many are done, such as **Tasks 2/5**.\n- **Signals**: the evidence. Click one to open it on the Signals tab.\n- **History**: every change, from status and assignee changes to tasks updated or sent.\n\nThe title's count, **Why this action?**, the **Goal**'s \"5 of 7 prompts\" and the AI searches a month all count the same prompts as the **Affected** tab, so the monthly searches are the sum of its rows."
         },
         {
           "heading": "A goal date that has passed",
@@ -147,7 +148,10 @@
         "kpi status",
         "goal reached",
         "visibility score",
-        "out of 100"
+        "out of 100",
+        "ai conversions",
+        "ai revenue",
+        "key events"
       ],
       "synonyms": [
         "key metrics",
@@ -156,7 +160,7 @@
         "performance targets"
       ],
       "plan": "all",
-      "updated": "2026-11-20",
+      "updated": "2026-11-28",
       "sections": [
         {
           "heading": null,
@@ -164,7 +168,11 @@
         },
         {
           "heading": "KPIs you can track",
-          "text": "AI Visibility, Citations, Mentions, Share of Voice, AI Referral Traffic and Positive Sentiment.\n\nAI Visibility is your Visibility score over the KPI period (Today shows it for the latest run): a score out of 100, such as \"29.9/100\", not a percentage of prompts. Its goal is out of 100 too, and its change, here and in History results, is in points. Share of Voice and Positive Sentiment are percentages.\n\nA brand that never had KPIs starts with a suggested set: AI Visibility, Citations, Mentions, Share of Voice and Positive Sentiment, plus AI Referral Traffic when Google Analytics is connected. Each aims 20% above its last 30 days, or starts from a default where there's no data yet. It is saved the first time an admin or manager opens KPIs."
+          "text": "AI Visibility, Citations, Mentions, Share of Voice, AI Referral Traffic, AI Conversions, AI Revenue and Positive Sentiment.\n\nAI Visibility is your Visibility score over the KPI period (Today shows it for the latest run): a score out of 100, such as \"29.9/100\", not a percentage of prompts. Its goal is out of 100 too, and its change, here and in History results, is in points. Share of Voice and Positive Sentiment are percentages.\n\nA brand that never had KPIs starts with a suggested set: AI Visibility, Citations, Mentions, Share of Voice and Positive Sentiment, plus AI Referral Traffic when Google Analytics is connected. Each aims 20% above its last 30 days, or starts from a default where there's no data yet. It is saved the first time an admin or manager opens KPIs."
+        },
+        {
+          "heading": "AI Conversions and AI Revenue",
+          "text": "Both come from Google Analytics, as on the AI Traffic page. **AI Conversions** counts the key events in sessions referred by AI platforms; **AI Revenue** is those sessions' purchase revenue. They show only when Google Analytics is connected, so they aren't in the suggested set: add them with **Edit KPIs**, where they're marked **Needs Google Analytics**.\n\nRevenue is in your Google Analytics property's own currency, shown as a whole number without a currency sign, and isn't converted. It needs e-commerce tracking: when Google Analytics reported no revenue in the period or the one before, the KPI says so instead of a status, and isn't counted as off track."
         },
         {
           "heading": "KPI status",
@@ -337,7 +345,9 @@
         "critical",
         "why this priority",
         "action ranking",
-        "low confidence"
+        "low confidence",
+        "single source",
+        "confirmed"
       ],
       "synonyms": [
         "action priority",
@@ -346,7 +356,7 @@
         "urgency"
       ],
       "plan": "all",
-      "updated": "2026-11-20",
+      "updated": "2026-11-28",
       "sections": [
         {
           "heading": null,
@@ -358,11 +368,11 @@
         },
         {
           "heading": "What goes into the score",
-          "text": "- **Impact**: the action's impact grade, high, medium or low.\n- **Demand**: how much its prompts, search queries or pages are searched or visited. Only the most demanded few count. A prompt's measured demand level raises it: High more, Medium a little.\n- **Severity**: a loss ranks above a sharp drop, a drop above a slip, and a slip above a gap or a site issue.\n- **Business value**: how commercial the searches are, or what a page is worth from Google Analytics.\n- **Confidence**: how many independent kinds of finding and data sources agree.\n- **Recoverability**: ground you held and lost is nearer at hand than ground you never held.\n- **Recency**: newer evidence counts more.\n\nDemand or business value that nothing measures neither raises nor lowers the score."
+          "text": "- **Impact**: the action's impact grade, high, medium or low.\n- **Demand**: how much its prompts, search queries or pages are searched or visited. Only the most demanded few count. A prompt's measured demand level raises it: High more, Medium a little.\n- **Severity**: a loss ranks above a sharp drop, a drop above a slip, and a slip above a gap or a site issue.\n- **Business value**: how commercial the searches are, or what a page is worth from Google Analytics.\n- **Confidence**: how many independent kinds of finding and data sources agree, how many nights in a row a finding has been seen, and how many prompts it covers.\n- **Recoverability**: ground you held and lost is nearer at hand than ground you never held.\n- **Recency**: newer evidence counts more.\n\nDemand or business value that nothing measures neither raises nor lowers the score."
         },
         {
           "heading": "Past success",
-          "text": "On top of these, past success nudges the score: how this brand's own earlier actions of the same kind turned out over the last six months, as the History scorecard counts them. A kind that improved results here sits up to 10 points higher, one that rarely did up to 10 lower. A few results barely move it, and a kind with no results yet doesn't move at all. Other brands' results are never used."
+          "text": "On top of these, past success nudges the score: how this brand's own earlier actions of the same kind turned out over the last six months, as the History scorecard counts them. A kind that improved results here sits up to 10 points higher, one that rarely did up to 10 lower. A few results barely move it, and a kind with no results yet doesn't move at all. Other brands' results are never used.\n\nWith two results or more, the **Actions** list shows the track next to the score, for example **4 of 7 worked**; hover it for the full sentence. Today's focus cards say it too. It's a count of what happened, never a forecast."
         },
         {
           "heading": "When the score changes",
@@ -373,8 +383,8 @@
           "text": "The action's **Overview** tab starts with **Why this priority?**: one sentence written from the facts the score rests on. It says what changed, on what, how recently, and what makes it matter. When past success moves the score by a point or more, it says so too."
         },
         {
-          "heading": "Low confidence",
-          "text": "When an action's score rests on little evidence, such as one kind of finding from one source, a **Low confidence** tag sits next to its score in the **Actions** list and next to **Why this priority?** in the open action. Hover or focus the tag to see why.\n\nThe score itself doesn't change. Confidence is only one part of it, so an action with strong impact and demand can still rank high. Check what it found before you act on it."
+          "heading": "Single source",
+          "text": "Confidence says how much evidence agrees, not whether a finding is right. Most actions come from your tracked AI answers alone: one kind of finding from one source. They show a **Single source** tag next to the score in the **Actions** list and next to **Why this priority?** in the open action. Hover or focus it to see why.\n\nA finding that keeps showing up raises confidence: seen on 3 nights in a row or more, and more again from 7. So does a finding across 5 prompts or more. Seen for a week, or on 3 nights across 5 prompts, it reads as **Confirmed**. A second kind of evidence, such as Google Analytics, Search Console or a site audit, also makes it **Confirmed** or **Well confirmed**. Confidence is only one part of the score, so impact and demand still rank the action."
         },
         {
           "heading": "Not the Content Plan's score",
@@ -2088,7 +2098,9 @@
         "wordpress",
         "merchant center",
         "product feed",
-        "connected tools"
+        "connected tools",
+        "slack",
+        "hubspot"
       ],
       "synonyms": [
         "connected apps",
@@ -2098,11 +2110,11 @@
         "hook up"
       ],
       "plan": "all",
-      "updated": "2026-11-02",
+      "updated": "2026-11-29",
       "sections": [
         {
           "heading": null,
-          "text": "**Connections** shows what the brand open now has connected, and what it could connect: Search Console, Analytics, your CMS, your product catalog and more. Connections are per brand. Chat, its skills and your agents all read the same list, so a tool connected in Settings shows as connected here too."
+          "text": "**Connections** shows what the brand open now has connected, and what it could connect: Search Console, Analytics, your CMS, your product catalog, Slack and more. Connections are per brand. Chat, its skills and your agents all read the same list, so a tool connected in Settings shows as connected here too."
         },
         {
           "heading": "In the chat menu",
@@ -2118,7 +2130,7 @@
         },
         {
           "heading": "Tools coming soon",
-          "text": "Cards marked **Soon**, such as HubSpot or Slack, can't be connected yet. To ask for a tool that isn't listed, click **Request a connection**."
+          "text": "Cards marked **Soon**, such as Shopify or Zapier, can't be connected yet. To ask for a tool that isn't listed, click **Request a connection**.\n\nSlack can be connected: it receives the brand's Pulse and alerts. HubSpot (Growth and above) ties AI visits to deals and revenue: its card shows the connected HubSpot account, and **Connect** opens it in **Settings › Integrations** (see **Connect HubSpot**)."
         }
       ]
     },
@@ -4194,7 +4206,7 @@
         },
         {
           "heading": "On the cloud: choose how to start",
-          "text": "The first screen, **How do you want to start?**, opens on the free trial. You can pick **Monthly**, **Yearly** or **Demo** instead.\n\n- **Start 14-day free trial** opens checkout. Nothing is charged until the trial ends, and you can cancel any time. The trial comes with an organization's first subscription only.\n- **Buy now**, or a plan without a trial, starts the plan the same day.\n\nAfter checkout, the five setup steps open; your brand's first run starts when you finish.\n\nNot ready to add a card? Pick **Demo**, then **Explore the sample brand**, or select **Explore a sample brand first** under the plans. It's made up, with sample data: every page opens, but nothing runs or changes. When you pick a plan there, you set up your own brand. If it doesn't open after it's prepared, **Open the demo** loads it again.\n\nA self-hosted install has no such screen."
+          "text": "The first screen, **How do you want to start?**, opens on the free trial, under four cards on why Ansvisor. You can pick **Monthly**, **Yearly** or **Demo** instead.\n\n- **Start 7-day free trial** opens checkout. Nothing is charged until the trial ends; cancel any time. The trial comes with an organization's first subscription only.\n- **Buy now**, or a plan without a trial, starts the plan the same day.\n\nAfter checkout, the five setup steps open; your brand's first run starts when you finish.\n\nNot ready to add a card? Pick **Demo**, then **Explore the sample brand**, or select **Explore a sample brand first** under the plans. It's sample data: every page opens, but nothing runs or changes. When you pick a plan there, you set up your own brand. If it doesn't open after it's prepared, **Open the demo** loads it again.\n\nA self-hosted install has no such screen."
         },
         {
           "heading": "Step 1: Brand basics",
@@ -4410,7 +4422,7 @@
         },
         {
           "heading": "Switch the mode",
-          "text": "Open the main menu: its sun or moon button sits beside the Ansvisor logo, at the top. When the menu is folded to icons, the button is hidden until you open it. On a phone, it is at the top of the menu. The moon switches to dark mode, and the sun to light mode.\n\nYour choice is kept in this browser, so each page opens in it. Another browser or device keeps its own mode. On Ansvisor Cloud, one where you never used Ansvisor starts in dark mode when you sign in there, until you switch."
+          "text": "Open the main menu: its sun or moon button sits beside the Ansvisor logo, at the top. When the menu is folded to icons, the button is hidden until you open it. On a phone, it is at the top of the menu. The moon switches to dark mode, and the sun to light mode.\n\nWhile you set up your first brand, the main menu isn't there yet: a **Light | Dark** switch sits in the top-right corner of every setup step instead, and switches at once.\n\nYour choice is kept in this browser, so each page opens in it. Another browser or device keeps its own mode. On Ansvisor Cloud, one where you never used Ansvisor starts in dark mode when you sign in there, until you switch."
         },
         {
           "heading": "The account menu",
@@ -4803,7 +4815,7 @@
       "sections": [
         {
           "heading": null,
-          "text": "Click a prompt's text in **Tracked Prompts** to open its own page. It shows the prompt's visibility, mentions, citations and per-platform results. When the prompt has a volume, an **AI searches a month** card shows its estimate. Below the figures, **Demand · is this asked for real?** shows measured signals of whether people really ask it."
+          "text": "Click a prompt's text in **Tracked Prompts** to open its own page. It shows the prompt's visibility, mentions and citations, and right below them its AI answers on each platform (**Platform Results**). When the prompt has a volume, an **AI searches a month** card shows its estimate. **See AI answers**, in a prompt's row menu on Tracked Prompts or in its positions panel, opens the page on those answers. At the bottom, **Demand · is this asked for real?** shows measured signals of whether people really ask it."
         },
         {
           "heading": "The four demand signals",
@@ -5199,7 +5211,7 @@
         },
         {
           "heading": "Filter by performance",
-          "text": "The **Performance** filter groups prompts by where your brand is named in their AI answers over the selected range, across every platform the prompt tracks:\n\n- **Best**: named in the first third of the brands an answer lists.\n- **Good**: named in the middle third.\n- **Late**: named in the last third.\n- **Missing**: named in fewer than half the answers.\n\nLate and Missing list the furthest behind first. A prompt with no answers in the range, such as a new one, has no performance yet. The **Positions** column shows your average position and its change; hover it for each platform, or use its chart button to open the positions panel."
+          "text": "The **Performance** filter groups prompts by where your brand is named in their AI answers over the selected range, across every platform the prompt tracks:\n\n- **Best**: named in the first third of the brands an answer lists.\n- **Good**: named in the middle third.\n- **Late**: named in the last third.\n- **Missing**: named in fewer than half the answers.\n\nLate and Missing list the furthest behind first. A prompt with no answers in the range, such as a new one, has no performance yet. The **Positions** column shows your average position and its change; hover it for each platform, or use its chart button to open the positions panel. The panel's **See AI answers** opens the prompt's answers; so does **See AI answers** in each row's menu."
         },
         {
           "heading": "Organize with tags",
@@ -5549,15 +5561,15 @@
         "credit pack"
       ],
       "plan": "starter",
-      "updated": "2026-11-27",
+      "updated": "2026-11-28",
       "sections": [
         {
           "heading": null,
-          "text": "**Settings › Billing** sells more for your plan. On Growth, **Add more to your plan** adds tracking slots, extra brands and AI usage top-ups, picked together and paid once. On Enterprise it adds tracking slots. **Add-ons** shows AI credit you have left and the packs you bought. Everything is paid with Stripe, added only after the payment goes through, and shown on your invoice."
+          "text": "**Settings › Billing** sells more for your plan. On Growth, **Add more to your plan** adds tracking slots, extra brands and AI usage top-ups, picked together and paid once. Enterprise buys the same tracking slots, extra brands and AI usage top-ups, at the same prices; extra brands add to the brands your contract includes. A contract with unlimited brands isn't offered extra brands. **Add-ons** shows AI credit you have left and the packs you bought. Everything is paid with Stripe, added only after the payment goes through, and shown on your invoice."
         },
         {
           "heading": "Tracking slots",
-          "text": "A slot tracks one prompt in one location on one platform, every day. Your plan includes slots on its own platforms (Growth: 250 on each standard platform). Under **Tracking slots**, each platform shows how many slots are used, your total and what is included. Click **+** or **−** to add or remove 100 slots on it.\n\nPrices per 100 slots a month: $15 on the standard platforms, $45 on ChatGPT Ads and Meta AI, $60 on Perplexity, Claude, Grok and Microsoft Copilot. On a yearly plan, prices are yearly, with 2 months free. Add-ons follow your plan's billing period.\n\nYou can't go below the slots a platform uses: remove it from some prompts first."
+          "text": "A slot tracks one prompt in one location on one platform, every day. Hover the **(i)** next to **Extra slots** to see this again. Your plan includes slots on its own platforms (Growth: 250 on each standard platform). Under **Tracking slots**, each platform shows how many slots are used, your total and what is included. Click **+** or **−** to add or remove 100 slots on it.\n\nPrices per 100 slots a month: $15 on the standard platforms, $45 on ChatGPT Ads and Meta AI, $60 on Perplexity, Claude, Grok and Microsoft Copilot. On a yearly plan, prices are yearly, with 2 months free. Add-ons follow your plan's billing period.\n\nYou can't go below the slots a platform uses: remove it from some prompts first."
         },
         {
           "heading": "Volume discount",
@@ -5569,7 +5581,7 @@
         },
         {
           "heading": "Review and pay",
-          "text": "Pick what you want, then click **Review and pay**. The window shows your new slots and limits, the volume discount, what is **Due today** (the rest of this period for slots and brands, and a top-up in full) and your total from the next renewal. **Pay** charges the card on file once. Fewer slots or brands leave a credit for your next invoices. You can't go below what you use: pause prompts or remove brands first.\n\nOnly admins of an active Growth or Enterprise plan buy. In a free trial, start your plan first; if your plan is set to end, keep it first."
+          "text": "Pick what you want. The cart then shows what you pay today, also on the button, and marks your plan as already paid. Click **Review and pay**. The window shows your new slots and limits, the volume discount, what is **Due today** (the rest of this period for slots and brands, and a top-up in full) and your total from the next renewal. **Pay** charges the card on file once. Fewer slots or brands leave a credit for your next invoices. You can't go below what you use: pause prompts or remove brands first.\n\nOnly admins of an active Growth or Enterprise plan buy. In a free trial, start your plan first; if your plan is set to end, keep it first."
         },
         {
           "heading": "AI credit packs (no longer sold)",
@@ -6918,6 +6930,7 @@
       "keywords": [
         "AI Visibility Score",
         "visibility formula",
+        "how is this calculated",
         "mention rate",
         "citation rate",
         "position",
@@ -6932,11 +6945,11 @@
         "how the score works"
       ],
       "plan": "all",
-      "updated": "2026-11-06",
+      "updated": "2026-11-28",
       "sections": [
         {
           "heading": null,
-          "text": "The **AI Visibility Score** is a score from 0 to 100, not a percentage. It blends three things over the answers in your date range and filters: how many answers name your brand, how many cite a page of yours, and how early you're named. A score of 0 means no answer names or cites you; the closer every answer comes to naming you first and citing you, the closer the score gets to 100. **Formulas** on the **Visibility** page shows the exact formula."
+          "text": "The **AI Visibility Score** is a score from 0 to 100, not a percentage. It blends three things over the answers in your date range and filters: how many answers name your brand, how many cite a page of yours, and how early you're named. A score of 0 means no answer names or cites you; the closer every answer comes to naming you first and citing you, the closer the score gets to 100. **Formulas** on the **Visibility** page shows the exact formula. Each card there also has a small Σ button, **How is this calculated?**, that opens Formulas on that card's own formula and says how many answers its number is based on."
         },
         {
           "heading": "The three parts",

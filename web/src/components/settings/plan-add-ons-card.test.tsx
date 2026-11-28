@@ -47,6 +47,7 @@ const VIEW: PlanAddOnsView = {
     { multiplier: 10, priceCents: 6900, briefs: 100, opportunities: 100 },
   ],
   renewsOn: '2026-11-29T10:00:00.000Z',
+  buyState: 'open',
   planId: 'growth',
   planPriceCents: 24900,
   slots: null,
@@ -128,6 +129,33 @@ describe('the add-ons card', () => {
     expect(text).toContain('$25 a month per brand');
     expect(text).toContain('until your plan renews on Nov 29, 2026');
     expect(text).toContain('10x AI usage');
+  });
+
+  it('says what is due today on the button, and marks the plan as already paid', async () => {
+    api.preview.mockResolvedValue({
+      ok: true,
+      changed: true,
+      limits: { prompts: 200, brands: 5 },
+      dueTodayCents: 4688,
+      totalCents: 27400,
+      currency: 'usd',
+      interval: 'month',
+      prorationDate: 1_800_000_000,
+      slots: {},
+      slotsPrice: SLOTS_PRICE,
+      slotsWaiting: [],
+    });
+    await render();
+    expect(container.textContent).toContain('Already in your subscription · no change');
+    await click(document.querySelector<HTMLElement>('[aria-label="One brand more"]')!);
+    // Before Stripe answers, the button doesn't guess an amount.
+    expect(byText('Review and pay')?.textContent).toBe('Review and pay');
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 700));
+    });
+    expect(api.preview).toHaveBeenCalledWith({ trackingUnits: 0, extraBrands: 1, topUp: 0 });
+    expect(byText('Review and pay')?.textContent).toBe('Review and pay $46.88');
+    expect(container.textContent).toContain('Due today: $46.88 for the added items');
   });
 
   it('reviews the whole cart with Stripe’s figures, then pays it once', async () => {
@@ -223,6 +251,8 @@ describe('the add-ons card', () => {
     expect(text()).toContain('Buy extra tracking credits');
     expect(text()).toContain('Growth includes 250 slots on each standard platform.');
     expect(text()).toContain('In your plan');
+    // The Extra slots header explains a slot on hover, from an (i) button.
+    expect(document.querySelector('th button[aria-label="What is a slot?"]')).not.toBeNull();
     expect(text()).toContain('Extra tracking: $0 a month. Add $500 more a month for 5% off');
 
     const more = document.querySelector<HTMLElement>('[aria-label="100 more Claude slots"]')!;
@@ -232,7 +262,7 @@ describe('the add-ons card', () => {
     expect(text()).toContain('Add $460 more a month for 10% off the part above $1,000.');
     // The cart: what the plan will have, and the monthly total.
     const cart = document.querySelector('[data-slot="add-ons-cart"]')!.textContent ?? '';
-    expect(cart).toContain('Growth plan$249/mo');
+    expect(cart).toContain('Growth planAlready in your subscription · no change$249/mo');
     expect(cart).toContain('Claude extra tracking900 slots');
     expect(cart).toContain('$538/mo');
     expect(cart).toContain('Monthly total from the next renewal $787/mo');
@@ -285,16 +315,75 @@ describe('the add-ons card', () => {
     expect(container.querySelector('[aria-label="Extra tracking tiers"]')).not.toBeNull();
   });
 
-  it('lets Enterprise buy slots alone', async () => {
+  it('lets Enterprise buy slots, extra brands and top-ups, not the retired tiers', async () => {
     await render({ state: 'enterprise', planId: 'enterprise', slots: SLOTS, tiers: [] });
     const text = container.textContent ?? '';
     expect(text).toContain('Buy extra tracking credits');
     expect(text).toContain('Enterprise plan');
-    expect(text).not.toContain('Extra brands');
-    expect(text).not.toContain('AI usage top-up');
+    expect(text).toContain('Extra brands');
+    expect(text).toContain('AI usage top-up');
+    expect(container.querySelector('[aria-label="Extra tracking tiers"]')).toBeNull();
     expect(text).not.toContain('Your contract sets');
     await click(document.querySelector<HTMLElement>('[aria-label="100 more ChatGPT slots"]')!);
     expect(byText('Review and pay')?.hasAttribute('disabled')).toBe(false);
+  });
+
+  it('lets Enterprise buy an extra brand with no slots on sale', async () => {
+    api.preview.mockResolvedValue({
+      ok: true,
+      changed: true,
+      limits: { prompts: 3000, brands: 11 },
+      slots: {},
+      slotsPrice: SLOTS_PRICE,
+      slotsWaiting: [],
+      dueTodayCents: 1250,
+      totalCents: 26400,
+      currency: 'usd',
+      interval: 'month',
+      prorationDate: 1_800_000_000,
+    });
+    await render({
+      state: 'enterprise',
+      planId: 'enterprise',
+      slots: null,
+      tiers: [],
+      base: { prompts: 3000, brands: 10 },
+    });
+    await click(document.querySelector<HTMLElement>('[aria-label="One brand more"]')!);
+    const cart = document.querySelector('[data-slot="add-ons-cart"]')!.textContent ?? '';
+    expect(cart).toContain('Extra brands');
+    expect(cart).toContain('Monthly total from the next renewal $274/mo');
+    await click(byText('Review and pay'));
+    expect(api.preview).toHaveBeenCalledWith({ trackingUnits: 0, extraBrands: 1, topUp: 0 });
+  });
+
+  it('keeps Enterprise’s brands closed when it can’t buy now', async () => {
+    await render({
+      state: 'enterprise',
+      buyState: 'not_admin',
+      planId: 'enterprise',
+      slots: null,
+      tiers: [],
+    });
+    expect(container.textContent).toContain('Only admins change add-ons.');
+    expect(document.querySelector('[aria-label="One brand more"]')?.hasAttribute('disabled')).toBe(
+      true,
+    );
+  });
+
+  it('shows unlimited Enterprise top-ups and slots, no extra brands', async () => {
+    await render({
+      state: 'enterprise',
+      planId: 'enterprise',
+      slots: SLOTS,
+      tiers: [],
+      base: { prompts: -1, brands: -1 },
+      brandPriceCents: null,
+    });
+    const text = container.textContent ?? '';
+    expect(text).not.toContain('Extra brands');
+    expect(text).toContain('AI usage top-up');
+    expect(document.querySelector('[aria-label="One brand more"]')).toBeNull();
   });
 
   it('says on Review and pay how many locations will wait when slots go below use', async () => {
@@ -319,6 +408,20 @@ describe('the add-ons card', () => {
     expect(document.body.textContent).toContain(
       'Claude: the newest 50 prompt locations will wait for a slot.',
     );
+  });
+
+  it('shows Enterprise nothing while no slots are on sale', async () => {
+    await render({
+      state: 'enterprise',
+      planId: 'enterprise',
+      slots: null,
+      brandPriceCents: null,
+      topUps: [],
+    });
+    const text = container.textContent ?? '';
+    expect(text).not.toContain('Your add-ons');
+    expect(text).not.toContain('AI usage top-up');
+    expect(text).not.toContain('Review and pay');
   });
 
   it('says when it can’t be read', async () => {

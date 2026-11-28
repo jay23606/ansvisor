@@ -68,6 +68,8 @@ import {
   useStartChoice,
   useStartCheckout,
 } from '@/components/billing/plan-start';
+import { CheckoutCanceledNote } from '@/components/billing/checkout-canceled-note';
+import { TRIAL_DAYS } from '@/lib/billing/trial';
 import { setPersonProperties, track } from '@/lib/analytics';
 
 /**
@@ -112,6 +114,7 @@ import {
 } from '@/lib/ai-brand-setup';
 import { DashboardPreview } from '@/components/onboarding/dashboard-preview';
 import { ExploreDemoChoice, ExploreDemoLine } from '@/components/onboarding/explore-demo-card';
+import { WhyAnsvisor } from '@/components/onboarding/why-ansvisor';
 import { ConnectSite } from '@/components/onboarding/connect-site';
 import { DemoSetupDialog } from '@/components/demo/demo-setup-dialog';
 import { useExploreDemo, usePreloadDemo } from '@/hooks/use-explore-demo';
@@ -346,7 +349,7 @@ export default function OnboardingPage() {
   const [startFirst, setStartFirst] = useState(false);
   // Trial length when the plan step is reached; null once the organization has
   // had a subscription, which then only buys now (Checkout refuses its trial).
-  const [trialDays, setTrialDays] = useState<number | null>(14);
+  const [trialDays, setTrialDays] = useState<number | null>(TRIAL_DAYS);
   // How the plan starts, as on the plan dialog: one choice above the cards,
   // the first-month offer shown from the first frame (the person setting up
   // the workspace is its admin), its code checked once the step is reached.
@@ -2234,6 +2237,9 @@ export default function OnboardingPage() {
             </div>
           </div>
 
+          {/* Why Ansvisor: four short reasons before the choice. */}
+          <WhyAnsvisor className="mb-4" />
+
           {/* How the plan starts: the trial, monthly, or a year; or the demo first */}
           <div className="mb-5 flex">
             <StartChoicePicker
@@ -2247,6 +2253,12 @@ export default function OnboardingPage() {
               demo={{ chosen: demoChosen, onChoose: () => setDemoChosen(true) }}
             />
           </div>
+
+          {!demoChosen && (
+            <div className="mb-4">
+              <CheckoutCanceledNote demo />
+            </div>
+          )}
 
           {demoChosen ? (
             // The demo, chosen above: its card in place of the plans. On the

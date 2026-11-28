@@ -105,7 +105,9 @@ describe('POST /api/stripe/checkout', () => {
     expect(res.status).toBe(200);
     expect(await res.json()).toEqual({ url: 'https://checkout.stripe.com/c/1' });
     expect(session().line_items).toEqual([{ price: 'price_starter_month', quantity: 1 }]);
-    expect(session().cancel_url).toBe('http://localhost:3000/dashboard/onboarding');
+    expect(session().cancel_url).toBe(
+      'http://localhost:3000/dashboard/onboarding?checkout=canceled',
+    );
     expect(session().subscription_data.trial_period_days).toBeUndefined();
     expect(session().payment_method_collection).toBe('always');
   });
@@ -127,7 +129,9 @@ describe('POST /api/stripe/checkout', () => {
     });
     expect(res.status).toBe(200);
     expect(session().line_items).toEqual([{ price: 'price_growth_year', quantity: 1 }]);
-    expect(session().cancel_url).toBe('http://localhost:3000/dashboard/settings/billing');
+    expect(session().cancel_url).toBe(
+      'http://localhost:3000/dashboard/settings/billing?checkout=canceled',
+    );
     expect(session().subscription_data.metadata).toEqual({
       organization_id: 'org1',
       plan_id: 'growth',
@@ -300,7 +304,7 @@ describe('POST /api/stripe/checkout, the two ways to start', () => {
   it('starts the free trial with no code at all, a card taken', async () => {
     const res = await post({ planId: 'starter', organizationId: 'org1', mode: 'trial' });
     expect(res.status).toBe(200);
-    expect(session().subscription_data.trial_period_days).toBe(14);
+    expect(session().subscription_data.trial_period_days).toBe(7);
     expect(session().payment_method_collection).toBe('always');
     expect(session().discounts).toBeUndefined();
     expect(session().allow_promotion_codes).toBeUndefined();
@@ -316,7 +320,7 @@ describe('POST /api/stripe/checkout, the two ways to start', () => {
     });
     expect(res.status).toBe(200);
     expect(session().line_items).toEqual([{ price: 'price_growth_year', quantity: 1 }]);
-    expect(session().subscription_data.trial_period_days).toBe(14);
+    expect(session().subscription_data.trial_period_days).toBe(7);
   });
 
   it('refuses a code with the trial', async () => {

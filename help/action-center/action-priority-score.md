@@ -1,11 +1,11 @@
 ---
 title: Action Priority Score
 route: /dashboard/action-center/actions
-keywords: [priority score, priority level, critical, why this priority, action ranking, low confidence]
+keywords: [priority score, priority level, critical, why this priority, action ranking, low confidence, single source, confirmed]
 synonyms: [action priority, ranking, how actions are sorted, urgency]
 plan: all
-updated: 2026-11-20
-last_checked: 2026-11-20
+updated: 2026-11-28
+last_checked: 2026-11-28
 owner: Cihan
 app_version: 0.3.0
 approved: true
@@ -26,7 +26,7 @@ Every action has a **Priority Score** from 0 to 100: how soon to work on it besi
 - **Demand**: how much its prompts, search queries or pages are searched or visited. Only the most demanded few count. A prompt's measured demand level raises it: High more, Medium a little.
 - **Severity**: a loss ranks above a sharp drop, a drop above a slip, and a slip above a gap or a site issue.
 - **Business value**: how commercial the searches are, or what a page is worth from Google Analytics.
-- **Confidence**: how many independent kinds of finding and data sources agree.
+- **Confidence**: how many independent kinds of finding and data sources agree, how many nights in a row a finding has been seen, and how many prompts it covers.
 - **Recoverability**: ground you held and lost is nearer at hand than ground you never held.
 - **Recency**: newer evidence counts more.
 
@@ -35,6 +35,8 @@ Demand or business value that nothing measures neither raises nor lowers the sco
 ## Past success
 
 On top of these, past success nudges the score: how this brand's own earlier actions of the same kind turned out over the last six months, as the History scorecard counts them. A kind that improved results here sits up to 10 points higher, one that rarely did up to 10 lower. A few results barely move it, and a kind with no results yet doesn't move at all. Other brands' results are never used.
+
+With two results or more, the **Actions** list shows the track next to the score, for example **4 of 7 worked**; hover it for the full sentence. Today's focus cards say it too. It's a count of what happened, never a forecast.
 
 ## When the score changes
 
@@ -46,11 +48,11 @@ An action sent from another page has no detection signals, so it is scored from 
 
 The action's **Overview** tab starts with **Why this priority?**: one sentence written from the facts the score rests on. It says what changed, on what, how recently, and what makes it matter. When past success moves the score by a point or more, it says so too.
 
-## Low confidence
+## Single source
 
-When an action's score rests on little evidence, such as one kind of finding from one source, a **Low confidence** tag sits next to its score in the **Actions** list and next to **Why this priority?** in the open action. Hover or focus the tag to see why.
+Confidence says how much evidence agrees, not whether a finding is right. Most actions come from your tracked AI answers alone: one kind of finding from one source. They show a **Single source** tag next to the score in the **Actions** list and next to **Why this priority?** in the open action. Hover or focus it to see why.
 
-The score itself doesn't change. Confidence is only one part of it, so an action with strong impact and demand can still rank high. Check what it found before you act on it.
+A finding that keeps showing up raises confidence: seen on 3 nights in a row or more, and more again from 7. So does a finding across 5 prompts or more. Seen for a week, or on 3 nights across 5 prompts, it reads as **Confirmed**. A second kind of evidence, such as Google Analytics, Search Console or a site audit, also makes it **Confirmed** or **Well confirmed**. Confidence is only one part of the score, so impact and demand still rank the action.
 
 ## Not the Content Plan's score
 

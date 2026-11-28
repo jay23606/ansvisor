@@ -467,6 +467,12 @@
     }
   },
   "onboarding": {
+    "theme": {
+      "label": "Thema",
+      "light": "Licht",
+      "dark": "Donker",
+      "hint": "Wijzig het altijd met ☀︎/☾ naast het logo in het menu."
+    },
     "setup": {
       "brandTitle": "Stel uw merk in",
       "brandIntro": "Ontdek hoe AI-platforms over u praten. Voeg uw eerste merk toe om aan de slag te gaan.",
@@ -553,6 +559,30 @@
     }
   },
   "planOffer": {
+    "why": {
+      "label": "Waarom Ansvisor",
+      "answers": {
+        "title": "Echte antwoorden, geen schattingen",
+        "body": "Zie de AI-antwoorden achter elk getal en hoe het berekend wordt. Open source."
+      },
+      "actions": {
+        "title": "Acties, niet alleen rapporten",
+        "body": "Elke bevinding wordt een taak. Veel daarvan doen agents voor je."
+      },
+      "price": {
+        "title": "Duidelijke prijs",
+        "body": "Je betaalt voor de Prompts die je per platform volgt. Meer wanneer je het nodig hebt."
+      },
+      "results": {
+        "title": "Resultaten om te laten zien",
+        "body": "Zichtbaarheid en AI-bezoeken door de tijd, in rapporten om te delen."
+      }
+    },
+    "checkoutCanceled": {
+      "title": "Uw betaling is niet voltooid, dus er is niets in rekening gebracht.",
+      "body": "U kunt het opnieuw proberen wanneer u er klaar voor bent.",
+      "bodyDemo": "U kunt het opnieuw proberen wanneer u er klaar voor bent, of eerst het demomerk verkennen, zonder creditcard."
+    },
     "buyNow": "Nu kopen",
     "startTrial": "Start gratis proefperiode van {days} dagen",
     "fullPlan": "Volledig abonnement vanaf dag één",
@@ -943,6 +973,7 @@
         "impact": "{level} impact",
         "effort": "ongeveer {effort}",
         "steps": "{done} van {total} stappen voltooid",
+        "past": "Eerder: {improved} van {results} vergelijkbare acties verbeterden de resultaten",
         "firstStep": "Eerste stap: {step}",
         "start": "Starten",
         "continue": "Doorgaan",
@@ -1236,6 +1267,9 @@
         "goal_reached": "Doel bereikt"
       },
       "pointsChange": "{value} pt.",
+      "notes": {
+        "no_revenue": "Google Analytics rapporteert geen omzet; hiervoor is e-commercetracking nodig"
+      },
       "score": "{value}/100",
       "vsGoalAria": "{progress}% van doel",
       "editKpis": "KPI's bewerken",
@@ -1311,6 +1345,7 @@
       "targetAria": "Streefwaarde voor {name}",
       "invalidTarget": "Doelen moeten positief zijn; doelen in procenten en scores mogen niet hoger zijn dan 100.",
       "scoreSuffix": "/100",
+      "needsGa": "Vereist Google Analytics",
       "callout": {
         "title": "Dit KPI-framework stuurt uw Action Center aan.",
         "description": "Acties en aanbevelingen worden geprioriteerd op basis van uw KPI-doelen."
@@ -1341,6 +1376,14 @@
       "ai_referral_traffic": {
         "name": "AI-verwijzingsverkeer",
         "description": "Bezoeken afkomstig van AI-platformen"
+      },
+      "ai_conversions": {
+        "name": "AI-conversies",
+        "description": "Belangrijke gebeurtenissen uit AI-verwezen sessies (Google Analytics)"
+      },
+      "ai_revenue": {
+        "name": "AI-omzet",
+        "description": "Omzet uit AI-verwezen sessies (Google Analytics)"
       },
       "positive_sentiment": {
         "name": "Positief sentiment",
@@ -2122,6 +2165,8 @@
       "noOpen": "Geen open acties. Voltooide en afgewezen acties vindt u onder Alle statussen.",
       "showAllStatuses": "Alle statussen tonen",
       "summary": {
+        "refreshed": "{count} deze week vernieuwd",
+        "refreshedHint": "In de afgelopen {days} dagen vervangen door een nieuwe actie op basis van actuele gegevens, omdat er 30 dagen niemand aan had gewerkt.",
         "open": "{count} open",
         "closed": "{count} gesloten deze week",
         "closedHint": "Voltooid of genegeerd in de afgelopen {days} dagen. Klik om ze weer te geven.",
@@ -2150,9 +2195,10 @@
         },
         "notScored": "Nog niet beoordeeld",
         "why": "Waarom deze prioriteit?",
+        "pastTag": "{improved} van {results} werkten",
         "lowConfidence": {
-          "tip": "Gebaseerd op {why}. Betrouwbaarheid is slechts één onderdeel van de score, dus impact en vraag kunnen deze nog steeds hoog laten scoren. Controleer dit voordat u actie onderneemt.",
-          "sentTip": "Beoordeeld op basis van wat is meegestuurd, niet op basis van gedetecteerde bevindingen. Controleer dit voordat u actie onderneemt."
+          "tip": "Gebaseerd op {why}. Google Analytics, Search Console of een site-audit kan een tweede soort bewijs toevoegen. Dit is maar één deel van de score; impact en vraag tellen ook mee.",
+          "sentTip": "Beoordeeld op wat ermee werd meegestuurd, niet op gevonden bevindingen."
         },
         "reason": {
           "change": {
@@ -2208,10 +2254,11 @@
           "sources": "bevestigd door {count} bronnen",
           "confidence": {
             "line": "{level} — {why}.",
-            "low": "Lage betrouwbaarheid",
-            "medium": "Gemiddelde betrouwbaarheid",
-            "high": "Hoge betrouwbaarheid",
+            "low": "Eén bron",
+            "medium": "Bevestigd",
+            "high": "Goed bevestigd",
             "found": "{kinds, plural, one {één type bevinding} other {# typen bevindingen}}{sources, plural, =0 {} one { uit één bron} other { uit # bronnen}}",
+            "held": "{found}{nights, plural, =0 {} one {, # nacht gezien} other {, # nachten op rij gezien}}{prompts, plural, =0 {} one { bij # Prompt} other { over # Prompts}}",
             "sent": "beoordeeld op basis van waarmee het is verzonden, niet op basis van gedetecteerde bevindingen"
           },
           "sentence": {
@@ -10687,6 +10734,7 @@
       "sectionLabel": "Belangrijkste statistieken",
       "noData": "Geen gegevens",
       "viewBreakdown": "{metric}: uitsplitsing bekijken",
+      "howCalculated": "{metric}: hoe wordt dit berekend?",
       "openPrompts": "Gevolgde prompts: Prompts openen",
       "openCitations": "Citaties: Citaties openen",
       "openMentions": "Vermeldingen: Vermeldingen openen",
@@ -15908,6 +15956,10 @@
     "loadError": "Kan uw prompts niet laden.",
     "visibilityDegraded": "Zichtbaarheidscijfers zijn tijdelijk niet beschikbaar — prompts worden zonder cijfers getoond.",
     "positions": {
+      "slots": {
+        "note": "Nog niet in uw abonnement · Voeg tracking slots toe om resultaten en posities van {platform} te volgen.",
+        "add": "Slots toevoegen"
+      },
       "answers": "{count, plural, one {# antwoord} other {# antwoorden}}",
       "answersInPeriod": "{count, plural, one {# antwoord} other {# antwoorden}} in deze periode",
       "mentionedIn": "In {mentioned} van {answers, plural, one {# antwoord} other {# antwoorden}} · {mentions, plural, one {# vermelding} other {# vermeldingen}}",
@@ -16587,6 +16639,256 @@
       "noRoomToResume": "Niet genoeg ruimte om te hervatten",
       "bulkFailed": "{action, select, resume {Hervatten van de Prompts mislukt.} other {Pauzeren van de Prompts mislukt.}}",
       "bulkPartial": "{action, select, resume {{failed} van {total} kon niet worden hervat.} other {{failed} van {total} kon niet worden gepauzeerd.}}"
+    },
+    "positionsSheet": {
+      "tracked": "Gevolgde prompt",
+      "paused": "Gepauzeerd",
+      "improvingTitle": "Open de actie en het resultaat",
+      "improving": "Wordt verbeterd · {code}",
+      "window": "{preset, select, custom {Aangepast bereik} other {Laatste {preset}}}",
+      "lastRun": "Laatste run: {at}",
+      "runs": "{count, plural, one {# run} other {# runs}}",
+      "period": "Periode",
+      "discardNote": "Als u de periode wijzigt, gaan uw niet-verzonden Improve-wijzigingen verloren.",
+      "keepEditing": "Doorgaan met bewerken",
+      "discard": "Verwerpen en wijzigen",
+      "seeAnswers": "AI-antwoorden bekijken",
+      "back": "Terug naar prompts",
+      "loading": "Posities laden",
+      "loadError": "Posities laden mislukt: {message}",
+      "retry": "Opnieuw proberen",
+      "noLongerAvailable": "Deze prompt is niet meer beschikbaar.",
+      "loadFailed": "Posities laden mislukt.",
+      "sentimentUnavailable": "Sentiment niet beschikbaar",
+      "sentiment": {
+        "positive": "positief",
+        "neutral": "neutraal",
+        "negative": "negatief"
+      },
+      "notMentioned": "Niet genoemd",
+      "mentioned": "Genoemd",
+      "positionUnavailable": "Positie niet beschikbaar",
+      "notCited": "Niet geciteerd",
+      "cited": "Geciteerd",
+      "locked": {
+        "growth": "Beschikbaar met Growth",
+        "notEnabled": "Niet ingeschakeld voor deze workspace",
+        "enterprise": "Beschikbaar met Enterprise",
+        "line": "{note} · {growth, select, yes {Upgrade} other {Neem contact met ons op}} om resultaten en posities van {platform} te volgen."
+      },
+      "upgrade": "Upgraden",
+      "contactUs": "Neem contact met ons op",
+      "improve": "Verbeteren",
+      "stat": {
+        "platformsAnswered": "Platforms met antwoord",
+        "inLatestRun": "in hun laatste run",
+        "mentionedOn": "Genoemd op",
+        "citedOn": "Geciteerd op",
+        "platforms": "platforms",
+        "avgPosition": "Gem. positie",
+        "whenMentioned": "indien genoemd",
+        "whenMentionedSources": "indien genoemd · {avg} in bronnen",
+        "runs": "Runs",
+        "trackedOf": "{tracked} van {count, plural, one {# dag} other {# dagen}} bijgehouden",
+        "mentioned": "Genoemd",
+        "cited": "Geciteerd",
+        "ofDays": "{n} / {count, plural, one {# dag} other {# dagen}}",
+        "notMentionedCount": "{count} niet genoemd",
+        "notCitedCount": "{count} niet geciteerd"
+      },
+      "tabs": {
+        "platforms": "Platformresultaten",
+        "history": "Dagelijkse geschiedenis ({count})"
+      },
+      "runAt": "Run op {at}",
+      "noRuns": "Geen voltooide trackingruns in deze periode",
+      "noRunsDot": "Geen voltooide trackingruns in deze periode.",
+      "mention": "Vermelding",
+      "citation": "Citaat",
+      "detectedEarlier": "Eerder in deze periode gedetecteerd",
+      "untracked": "{count, plural, one {# dag} other {# dagen}} zonder voltooide run. Niet-bijgehouden dagen tellen niet als niet genoemd of niet geciteerd.",
+      "blocksNote": "Elk blok is één dag in het geselecteerde bereik, in uw tijdzone. Beweeg over een blok voor de posities van die dag; open een platform voor alle runs.",
+      "legend": {
+        "Early": "Vroeg genoemd",
+        "Mid": "Midden",
+        "Late": "Laat",
+        "cited": "Alleen geciteerd",
+        "none": "Geen resultaat",
+        "untracked": "Niet bijgehouden"
+      },
+      "tone": {
+        "Early": "Vroeg",
+        "Mid": "Midden",
+        "Late": "Laat"
+      },
+      "tip": {
+        "share": " in {n} van {runs} runs",
+        "rankOf": "#{rank} van {total}"
+      },
+      "heatmapLabel": "{platform}: genoemd op {mentioned} en geciteerd op {cited} van {count, plural, one {# bijgehouden dag} other {# bijgehouden dagen}}",
+      "trio": {
+        "best": "Beste",
+        "worst": "Slechtste",
+        "avg": "Gem.",
+        "none": "Geen vermeldingspositie",
+        "title": "Positie indien genoemd"
+      },
+      "runsNote": "{runs} runs · genoemd in {mentioned} · geciteerd in {cited}",
+      "noData": "Geen trackinggegevens voor deze periode",
+      "toggle": "{open, select, yes {Dagelijkse {platform}-resultaten verbergen} other {Dagelijkse {platform}-resultaten tonen}}",
+      "runsOnDays": "{runs, plural, one {# run} other {# runs}} op {days, plural, one {# dag} other {# dagen}}",
+      "sentimentLine": " · sentiment in antwoorden met vermelding: {positive} positief, {neutral} neutraal, {negative} negatief",
+      "sentimentUnavailableTail": ", {count} niet beschikbaar",
+      "moreDays": "{count} extra dagen tonen",
+      "platformsAnswered": "{count, plural, one {# platform} other {# platforms}} heeft geantwoord"
+    },
+    "bulkImport": {
+      "intro": "Zet uw Prompts in <b>één kolom</b>, één Prompt per rij, onder elkaar. Een eerste rij met de titel <b>Prompt</b> wordt gelezen als koptekst (optioneel). Geïmporteerde Prompts gebruiken de platforms die onder Enkel zijn geselecteerd en de locatie van het merk; stel het onderwerp en de locatie van elke Prompt daarna in met Bewerken in Alle Prompts.",
+      "drop": "Sleep een .xlsx- of .csv-bestand hierheen, of klik om te bladeren",
+      "perRow": "Eén Prompt per rij · maximaal {max} rijen",
+      "template": "Sjabloon downloaden",
+      "chooseFile": "Kies een .xlsx- of .csv-bestand.",
+      "unreadable": "Dit bestand kon niet worden gelezen. Controleer of het een geldig .xlsx- of .csv-bestand is.",
+      "counts": "<b>{valid} geldig</b> · {duplicates, plural, one {# duplicaat} other {# duplicaten}} · {errors, plural, one {# fout} other {# fouten}}",
+      "inUse": "· {used} / {max} Prompt-locaties in gebruik",
+      "truncated": "Alleen de eerste {max} rijen zijn gelezen; {more} extra zijn weggelaten. Splits grotere bestanden op.",
+      "extraColumns": "Alleen de Prompt-kolom wordt gelezen; de andere kolommen van het bestand zijn genegeerd.",
+      "noneImportable": "Er kunnen geen Prompts worden geïmporteerd. Uw {plan}-abonnement volgt maximaal {max} Prompt-locaties en er zijn er al {used} in gebruik.",
+      "someImportable": "Slechts {valid} van {total} Prompts worden geïmporteerd. Uw {plan}-abonnement volgt maximaal {max} Prompt-locaties en er zijn er al {used} in gebruik. De resterende {count, plural, one {# Prompt} other {# Prompts}} (vanaf rij {row}) worden niet geïmporteerd.",
+      "toAddMore": "Om meer Prompts toe te voegen, {starter, select, yes {upgrade uw abonnement} other {neem contact met ons op}}.",
+      "head": {
+        "row": "Rij",
+        "prompt": "Prompt",
+        "status": "Status"
+      },
+      "status": {
+        "valid": "Geldig",
+        "duplicate": "Duplicaat",
+        "error": "Fout",
+        "over_limit": "Boven abonnementslimiet"
+      },
+      "reason": {
+        "empty": "Lege Prompt",
+        "tooLong": "Langer dan {max} tekens",
+        "duplicate": "Al gevolgd of herhaald in het bestand"
+      },
+      "downloadNotImported": "Niet-geïmporteerde Prompts downloaden (.csv)",
+      "downloadErrors": "Fouten downloaden (.csv)",
+      "importButton": "{count, plural, one {# Prompt} other {# Prompts}} importeren",
+      "importedSome": "{imported} geïmporteerd · {notImported} niet geïmporteerd vanwege abonnementslimiet",
+      "importedAll": "{count, plural, one {# Prompt geïmporteerd} other {# Prompts geïmporteerd}}",
+      "analyzing": "Ze worden nu geanalyseerd. Stel onderwerpen en locaties in met Bewerken in Alle Prompts.",
+      "nextRun": "Ze worden meegenomen in de volgende trackingrun.",
+      "failed": "Importeren mislukt. Probeer het opnieuw."
+    },
+    "workStatus": {
+      "todo": "Te doen",
+      "in_progress": "In uitvoering",
+      "done": "Klaar",
+      "set": "Status instellen",
+      "setLabel": "Werkstatus instellen",
+      "none": "Geen status"
+    },
+    "detail": {
+      "presets": {
+        "24h": "24u",
+        "7d": "7d",
+        "30d": "30d",
+        "90d": "90d"
+      },
+      "unknownModel": "Onbekend",
+      "sentiment": {
+        "positive": "positief",
+        "neutral": "neutraal",
+        "negative": "negatief"
+      },
+      "active": "Actief",
+      "paused": "Gepauzeerd",
+      "lastRun": "Laatste uitvoering: {time}",
+      "loadFailed": "Prompt-details konden niet worden geladen",
+      "errorTitle": "Deze Prompt kon niet worden geladen",
+      "retry": "Opnieuw proberen",
+      "notFoundTitle": "Prompt niet gevonden",
+      "notFoundBody": "Deze Prompt is mogelijk verwijderd of bestaat niet.",
+      "goBack": "Teruggaan",
+      "statusUpdateFailed": "Status kon niet worden bijgewerkt",
+      "opportunitiesLoadFailed": "Contentkansen konden niet worden geladen",
+      "kpi": {
+        "visibility": "Zichtbaarheid — vermeld in {mentioned} van {total, plural, one {# antwoord} other {# antwoorden}}, geciteerd in {cited}",
+        "mentions": "Vermeldingen",
+        "citations": "Citaten"
+      },
+      "results": {
+        "title": "Platformresultaten",
+        "summary": "{count, plural, one {# resultaat} other {# resultaten}}, gegroepeerd per platform en model.",
+        "empty": "Nog geen trackingresultaten voor deze Prompt.",
+        "emptyRange": "Geen resultaten in de gekozen periode.",
+        "showAll": "Alle gegevens tonen"
+      },
+      "group": {
+        "runs": "{count, plural, one {# uitvoering} other {# uitvoeringen}}",
+        "mentions": "Vermeldingen",
+        "citations": "Citaten",
+        "runsHeading": "Uitvoeringen",
+        "mentionCount": "{count, plural, one {<n>#</n><l> vermelding</l>} other {<n>#</n><l> vermeldingen</l>}}",
+        "citationCount": "{count, plural, one {<n>#</n><l> citaat</l>} other {<n>#</n><l> citaten</l>}}",
+        "showResponse": "Antwoord tonen",
+        "hideResponse": "Antwoord verbergen",
+        "openFullPage": "Volledige pagina openen",
+        "showingLatest": "De laatste {shown} van {total, plural, one {# uitvoering} other {# uitvoeringen}} voor dit platform."
+      },
+      "sources": {
+        "title": "Belangrijkste bronnen",
+        "description": "Bronnen die AI-platforms citeren bij het beantwoorden van deze Prompt.",
+        "filterPlaceholder": "Filteren op domein, URL of titel...",
+        "domainsTab": "Domeinen ({count})",
+        "urlsTab": "URL's ({count})",
+        "rank": "Positie",
+        "domain": "Domein",
+        "url": "URL",
+        "platforms": "Platforms",
+        "usage": "Gebruik",
+        "citations": "Citaten",
+        "openDomain": "{domain} openen in een nieuw tabblad",
+        "openCitedPage": "Geciteerde pagina openen in een nieuw tabblad",
+        "openCitedPageTitle": "Geciteerde pagina openen"
+      },
+      "notes": {
+        "title": "Notities",
+        "description": "Houd het werk achter deze Prompt bij — wat is gepubliceerd, gepland of besloten.",
+        "placeholder": "bijv. Een vergelijkend blogartikel gepubliceerd dat op deze Prompt mikt…",
+        "add": "Notitie toevoegen",
+        "empty": "Nog geen notities — voeg hierboven de eerste toe.",
+        "emptyReadOnly": "Nog geen notities.",
+        "unknownAuthor": "Onbekend",
+        "delete": "Notitie verwijderen",
+        "addFailed": "Notitie kon niet worden toegevoegd",
+        "deleteFailed": "Notitie kon niet worden verwijderd"
+      },
+      "targets": {
+        "title": "Doel-URL's",
+        "description": "Pagina's die AI-antwoorden voor deze Prompt moeten citeren. De citatiestatus wordt automatisch bijgewerkt zodra er nieuwe trackingresultaten binnenkomen.",
+        "add": "Toevoegen",
+        "empty": "Nog geen doel-URL's — voeg de pagina's toe die je geciteerd wilt zien.",
+        "emptyReadOnly": "Nog geen doel-URL's.",
+        "remove": "Doel-URL verwijderen",
+        "addFailed": "URL kon niet worden toegevoegd",
+        "removeFailed": "URL kon niet worden verwijderd",
+        "notCited": "Nog niet geciteerd",
+        "cited": "Geciteerd ×{count}",
+        "citedIn": "{count, plural, one {Geciteerd in # antwoord} other {Geciteerd in # antwoorden}}",
+        "first": "eerst {date}",
+        "last": "laatst {date}",
+        "alreadyCited": "werd al geciteerd voordat je erop mikte"
+      },
+      "opportunities": {
+        "title": "Contentkansen",
+        "description": "Kansen die voor deze Prompt zijn gevonden en op actie wachten.",
+        "loadFailed": "Contentkansen konden niet worden geladen.",
+        "empty": "Geen open kansen voor deze Prompt.",
+        "briefReady": "Brief klaar",
+        "viewAll": "Alle {total} bekijken"
+      }
     }
   },
   "volumeEstimate": {
@@ -18765,6 +19067,7 @@
           "nextTag": "· volgende"
         },
         "unit": "<b>1 slot</b> = 1 Prompt die dagelijks wordt gevolgd in 1 locatie op dat platform.",
+        "unitInfo": "Wat is een slot?",
         "columns": {
           "platform": "Platform",
           "included": "In uw abonnement",
@@ -18811,6 +19114,7 @@
       },
       "summary": "{prompts} Prompt-locaties · {brands} merken",
       "review": "Controleren en betalen",
+      "reviewPrice": "Controleren en betalen {price}",
       "reviewing": "Prijs controleren…",
       "dialog": {
         "title": "Controleer uw add-ons",
@@ -18862,6 +19166,7 @@
         "title": "Uw add-ons",
         "onePayment": "Eén betaling",
         "plan": "Abonnement {plan}",
+        "planSub": "Al in je abonnement · geen wijziging",
         "slots": "Extra tracking {platform}",
         "slotsCount": "{slots} slots",
         "remove": "{item} verwijderen",
@@ -18871,7 +19176,8 @@
         "topUp": "{multiplier}x AI-gebruik · tot {date}",
         "total": "{interval, select, year {Jaarlijks} other {Maandelijks}} totaal vanaf de volgende verlenging <b>{price}</b>",
         "undoAll": "Alle wijzigingen ongedaan maken",
-        "dueToday": "Vandaag verschuldigd: de toegevoegde items voor de rest van deze periode, weergegeven bij Controleren en betalen."
+        "dueToday": "Vandaag verschuldigd: de toegevoegde items voor de rest van deze periode, weergegeven bij Controleren en betalen.",
+        "dueTodayAmount": "Vandaag te betalen: <b>{price}</b> voor de toevoegingen, voor de rest van deze periode."
       }
     },
     "cancelsOn": "Abonnement eindigt op {date}",

@@ -467,6 +467,12 @@
     }
   },
   "onboarding": {
+    "theme": {
+      "label": "테마",
+      "light": "라이트",
+      "dark": "다크",
+      "hint": "메뉴의 로고 옆 ☀︎/☾ 버튼으로 언제든지 바꿀 수 있습니다."
+    },
     "setup": {
       "brandTitle": "브랜드 설정하기",
       "brandIntro": "AI 플랫폼이 내 브랜드를 어떻게 언급하는지 확인해 보세요. 시작하려면 첫 브랜드를 추가하세요.",
@@ -553,6 +559,30 @@
     }
   },
   "planOffer": {
+    "why": {
+      "label": "Ansvisor를 선택하는 이유",
+      "answers": {
+        "title": "추측이 아닌 실제 답변",
+        "body": "각 숫자 뒤에 있는 AI 답변과 계산 방식을 확인하세요. 오픈 소스."
+      },
+      "actions": {
+        "title": "보고서만이 아닌 실행",
+        "body": "모든 발견은 작업이 됩니다. 많은 작업을 에이전트가 대신 처리합니다."
+      },
+      "price": {
+        "title": "명확한 가격",
+        "body": "플랫폼별로 추적하는 Prompts만큼 결제합니다. 필요할 때 더 추가하세요."
+      },
+      "results": {
+        "title": "보여줄 수 있는 성과",
+        "body": "시간에 따른 가시성과 AI 방문을 공유 가능한 보고서로."
+      }
+    },
+    "checkoutCanceled": {
+      "title": "결제가 완료되지 않아 요금이 청구되지 않았습니다.",
+      "body": "준비되시면 언제든지 다시 시도해 주세요.",
+      "bodyDemo": "준비되시면 언제든지 다시 시도하실 수 있으며, 카드 없이 먼저 데모 브랜드를 둘러보셔도 됩니다."
+    },
     "buyNow": "지금 구매하기",
     "startTrial": "{days}일 무료 체험 시작하기",
     "fullPlan": "첫날부터 모든 플랜 기능 이용",
@@ -943,6 +973,7 @@
         "impact": "{level} 영향도",
         "effort": "약 {effort}",
         "steps": "{total}단계 중 {done}단계 완료",
+        "past": "이전: 유사한 작업 {results}개 중 {improved}개가 결과를 개선",
         "firstStep": "첫 번째 단계: {step}",
         "start": "시작",
         "continue": "계속",
@@ -1236,6 +1267,9 @@
         "goal_reached": "목표 달성"
       },
       "pointsChange": "{value}점",
+      "notes": {
+        "no_revenue": "Google Analytics에서 보고된 수익이 없습니다. 전자상거래 추적이 필요합니다"
+      },
       "score": "{value}/100",
       "vsGoalAria": "목표의 {progress}%",
       "editKpis": "KPI 수정",
@@ -1311,6 +1345,7 @@
       "targetAria": "{name} 목표치",
       "invalidTarget": "목표값은 양수여야 하며, 퍼센트 및 점수 목표값은 100을 초과할 수 없습니다.",
       "scoreSuffix": "/100",
+      "needsGa": "Google Analytics 필요",
       "callout": {
         "title": "이 KPI 프레임워크가 액션 센터를 구동합니다.",
         "description": "조치 및 권장 사항은 KPI 목표를 기반으로 우선순위가 지정됩니다."
@@ -1341,6 +1376,14 @@
       "ai_referral_traffic": {
         "name": "AI 추천 트래픽",
         "description": "AI 플랫폼에서 유입된 방문 수"
+      },
+      "ai_conversions": {
+        "name": "AI 전환",
+        "description": "AI 유입 세션의 주요 이벤트(Google Analytics)"
+      },
+      "ai_revenue": {
+        "name": "AI 수익",
+        "description": "AI 유입 세션의 수익(Google Analytics)"
       },
       "positive_sentiment": {
         "name": "긍정적 감성",
@@ -2122,6 +2165,8 @@
       "noOpen": "열린 액션이 없습니다. 완료되거나 무시된 액션은 모든 상태에서 볼 수 있습니다.",
       "showAllStatuses": "모든 상태 보기",
       "summary": {
+        "refreshed": "이번 주 {count}개 새로 고침됨",
+        "refreshedHint": "30일 동안 아무도 작업하지 않아 최신 데이터로 만든 새 액션으로 최근 {days}일 이내에 교체되었습니다.",
         "open": "진행 중 {count}개",
         "closed": "이번 주 완료 {count}개",
         "closedHint": "최근 {days}일 동안 완료되거나 무시된 항목입니다. 클릭하여 목록을 확인하세요.",
@@ -2150,9 +2195,10 @@
         },
         "notScored": "아직 채점되지 않음",
         "why": "이 우선순위인 이유는?",
+        "pastTag": "{results}개 중 {improved}개 효과",
         "lowConfidence": {
-          "tip": "{why}을(를) 기준으로 합니다. 신뢰도는 점수의 일부일 뿐이라 영향도와 수요에 따라 높게 평가될 수 있습니다. 실행 전에 확인하세요.",
-          "sentTip": "감지된 결과가 아니라 전송 시 함께 제공된 정보를 기준으로 평가되었습니다. 실행 전에 확인하세요."
+          "tip": "{why}에 근거합니다. Google Analytics, Search Console 또는 사이트 감사를 통해 두 번째 근거를 추가할 수 있습니다. 이는 점수의 일부일 뿐이며, 영향과 수요도 순위에 반영됩니다.",
+          "sentTip": "감지된 결과가 아니라 함께 보낸 내용을 기준으로 평가되었습니다."
         },
         "reason": {
           "change": {
@@ -2208,10 +2254,11 @@
           "sources": "{count}개 소스에서 확인됨",
           "confidence": {
             "line": "{level} — {why}.",
-            "low": "낮은 신뢰도",
-            "medium": "보통 신뢰도",
-            "high": "높은 신뢰도",
+            "low": "단일 출처",
+            "medium": "확인됨",
+            "high": "충분히 확인됨",
             "found": "{sources, plural, =0 {{kinds, plural, other {#가지 발견 유형}}} other {{sources, plural, other {#개 출처}}의 {kinds, plural, other {#가지 발견 유형}}}}",
+            "held": "{prompts, plural, =0 {} other {#개 Prompt에서 }}{nights, plural, =0 {} other {#일 연속 }}확인된 {found}",
             "sent": "감지된 발견 사항이 아닌 함께 전송된 항목을 바탕으로 평가됨"
           },
           "sentence": {
@@ -10662,6 +10709,7 @@
       "sectionLabel": "핵심 지표",
       "noData": "데이터 없음",
       "viewBreakdown": "{metric}: 세부정보 보기",
+      "howCalculated": "{metric}: 어떻게 계산되나요?",
       "openPrompts": "추적 중인 프롬프트: Prompts 열기",
       "openCitations": "인용: Citations 열기",
       "openMentions": "멘션: Mentions 열기",
@@ -15883,6 +15931,10 @@
     "loadError": "Prompt를 불러올 수 없습니다.",
     "visibilityDegraded": "가시성 수치를 일시적으로 사용할 수 없어 가시성 수치 없이 Prompt를 표시합니다.",
     "positions": {
+      "slots": {
+        "note": "아직 요금제에 포함되어 있지 않습니다 · {platform} 결과와 순위를 추적하려면 추적 slots를 추가하세요.",
+        "add": "slots 추가"
+      },
       "answers": "답변 {count, plural, other {#개}}",
       "answersInPeriod": "해당 기간 내 답변 {count, plural, other {#개}}",
       "mentionedIn": "답변 {answers, plural, other {#개}} 중 {mentioned}개에 포함 · 언급 {mentions, plural, other {#회}}",
@@ -16562,6 +16614,256 @@
       "noRoomToResume": "재개할 여유 공간이 부족합니다",
       "bulkFailed": "{action, select, resume {Prompts를 재개하지 못했습니다.} other {Prompts를 일시중지하지 못했습니다.}}",
       "bulkPartial": "{action, select, resume {{total}개 중 {failed}개를 재개할 수 없습니다.} other {{total}개 중 {failed}개를 일시중지할 수 없습니다.}}"
+    },
+    "positionsSheet": {
+      "tracked": "추적 중인 Prompt",
+      "paused": "일시중지됨",
+      "improvingTitle": "액션과 결과 열기",
+      "improving": "개선 중 · {code}",
+      "window": "{preset, select, custom {사용자 지정 기간} other {최근 {preset}}}",
+      "lastRun": "마지막 실행: {at}",
+      "runs": "{count, plural, other {#회 실행}}",
+      "period": "기간",
+      "discardNote": "기간을 변경하면 전송하지 않은 개선 편집 내용이 삭제됩니다.",
+      "keepEditing": "계속 편집",
+      "discard": "삭제하고 변경",
+      "seeAnswers": "AI 답변 보기",
+      "back": "Prompts로 돌아가기",
+      "loading": "순위를 불러오는 중",
+      "loadError": "순위를 불러오지 못했습니다: {message}",
+      "retry": "다시 시도",
+      "noLongerAvailable": "이 Prompt는 더 이상 사용할 수 없습니다.",
+      "loadFailed": "순위를 불러오지 못했습니다.",
+      "sentimentUnavailable": "감성 정보를 사용할 수 없음",
+      "sentiment": {
+        "positive": "긍정",
+        "neutral": "중립",
+        "negative": "부정"
+      },
+      "notMentioned": "언급되지 않음",
+      "mentioned": "언급됨",
+      "positionUnavailable": "순위를 사용할 수 없음",
+      "notCited": "인용되지 않음",
+      "cited": "인용됨",
+      "locked": {
+        "growth": "Growth 요금제에서 사용 가능",
+        "notEnabled": "이 워크스페이스에서는 사용할 수 없음",
+        "enterprise": "Enterprise 요금제에서 사용 가능",
+        "line": "{note} · {platform} 결과와 순위를 추적하려면 {growth, select, yes {업그레이드하세요} other {문의해 주세요}}."
+      },
+      "upgrade": "업그레이드",
+      "contactUs": "문의하기",
+      "improve": "개선",
+      "stat": {
+        "platformsAnswered": "응답한 플랫폼",
+        "inLatestRun": "최근 실행 기준",
+        "mentionedOn": "언급된 플랫폼",
+        "citedOn": "인용된 플랫폼",
+        "platforms": "개 플랫폼",
+        "avgPosition": "평균 순위",
+        "whenMentioned": "언급 시",
+        "whenMentionedSources": "언급 시 · 출처에서 {avg}",
+        "runs": "실행",
+        "trackedOf": "{count, plural, other {#일}} 중 {tracked}일 추적됨",
+        "mentioned": "언급됨",
+        "cited": "인용됨",
+        "ofDays": "{n} / {count, plural, other {#일}}",
+        "notMentionedCount": "{count}회 언급되지 않음",
+        "notCitedCount": "{count}회 인용되지 않음"
+      },
+      "tabs": {
+        "platforms": "플랫폼별 결과",
+        "history": "일별 기록 ({count})"
+      },
+      "runAt": "실행 시각 {at}",
+      "noRuns": "이 기간에 완료된 추적 실행이 없습니다",
+      "noRunsDot": "이 기간에 완료된 추적 실행이 없습니다.",
+      "mention": "언급",
+      "citation": "인용",
+      "detectedEarlier": "이 기간 중 먼저 감지됨",
+      "untracked": "{count, plural, other {#일}} 동안 완료된 실행이 없습니다. 추적되지 않은 날은 언급되지 않음 또는 인용되지 않음으로 집계되지 않습니다.",
+      "blocksNote": "각 블록은 선택한 기간의 하루이며 사용자의 시간대를 기준으로 합니다. 블록에 마우스를 올리면 해당 날짜의 순위를, 플랫폼을 열면 모든 실행을 볼 수 있습니다.",
+      "legend": {
+        "Early": "초반 언급",
+        "Mid": "중반",
+        "Late": "후반",
+        "cited": "인용만",
+        "none": "결과 없음",
+        "untracked": "추적 안 됨"
+      },
+      "tone": {
+        "Early": "초반",
+        "Mid": "중반",
+        "Late": "후반"
+      },
+      "tip": {
+        "share": " {runs}회 실행 중 {n}회",
+        "rankOf": "{total}개 중 {rank}위"
+      },
+      "heatmapLabel": "{platform}: 추적된 {count, plural, other {#일}} 중 {mentioned}일 언급, {cited}일 인용",
+      "trio": {
+        "best": "최고",
+        "worst": "최저",
+        "avg": "평균",
+        "none": "언급 순위 없음",
+        "title": "언급 시 순위"
+      },
+      "runsNote": "{runs}회 실행 · {mentioned}회 언급 · {cited}회 인용",
+      "noData": "이 기간의 추적 데이터가 없습니다",
+      "toggle": "{platform} 일별 결과 {open, select, yes {숨기기} other {표시}}",
+      "runsOnDays": "{days, plural, other {#일}} 동안 {runs, plural, other {#회}} 실행",
+      "sentimentLine": " · 언급된 답변의 감성: 긍정 {positive}건, 중립 {neutral}건, 부정 {negative}건",
+      "sentimentUnavailableTail": ", {count}건 확인 불가",
+      "moreDays": "{count}일 더 보기",
+      "platformsAnswered": "{count, plural, other {#개 플랫폼}}이 답변함"
+    },
+    "bulkImport": {
+      "intro": "Prompt를 <b>한 열</b>에 한 행당 하나씩 아래로 입력하세요. 첫 행의 제목이 <b>Prompt</b>이면 헤더로 인식됩니다(선택 사항). 가져온 Prompts는 단일에서 선택한 플랫폼과 브랜드의 위치를 사용하며, 각 Prompt의 주제와 위치는 나중에 모든 Prompts의 편집에서 설정할 수 있습니다.",
+      "drop": ".xlsx 또는 .csv 파일을 끌어다 놓거나 클릭하여 찾아보세요",
+      "perRow": "행당 Prompt 하나 · 최대 {max}행",
+      "template": "템플릿 다운로드",
+      "chooseFile": ".xlsx 또는 .csv 파일을 선택하세요.",
+      "unreadable": "파일을 읽을 수 없습니다. 올바른 .xlsx 또는 .csv 파일인지 확인하세요.",
+      "counts": "<b>유효 {valid}건</b> · 중복 {duplicates, plural, other {#건}} · 오류 {errors, plural, other {#건}}",
+      "inUse": "· Prompt 위치 {used} / {max} 사용 중",
+      "truncated": "처음 {max}행만 읽었으며 {more}행은 제외되었습니다. 파일을 나누어 주세요.",
+      "extraColumns": "Prompt 열만 읽으며 파일의 다른 열은 무시되었습니다.",
+      "noneImportable": "가져올 수 있는 Prompts가 없습니다. {plan} 플랜은 최대 {max}개의 Prompt 위치를 추적하며 {used}개가 이미 사용 중입니다.",
+      "someImportable": "{total}개 중 {valid}개의 Prompts만 가져옵니다. {plan} 플랜은 최대 {max}개의 Prompt 위치를 추적하며 {used}개가 이미 사용 중입니다. 나머지 {count, plural, other {#개 Prompt}}({row}행부터)는 가져오지 않습니다.",
+      "toAddMore": "Prompts를 더 추가하려면 {starter, select, yes {플랜을 업그레이드하세요} other {문의해 주세요}}.",
+      "head": {
+        "row": "행",
+        "prompt": "Prompt",
+        "status": "상태"
+      },
+      "status": {
+        "valid": "유효",
+        "duplicate": "중복",
+        "error": "오류",
+        "over_limit": "플랜 한도 초과"
+      },
+      "reason": {
+        "empty": "빈 Prompt",
+        "tooLong": "{max}자 초과",
+        "duplicate": "이미 추적 중이거나 파일 내 중복"
+      },
+      "downloadNotImported": "가져오지 않은 Prompts 다운로드 (.csv)",
+      "downloadErrors": "오류 다운로드 (.csv)",
+      "importButton": "{count, plural, other {Prompt #개}} 가져오기",
+      "importedSome": "{imported}개 가져옴 · 플랜 한도로 {notImported}개 가져오지 않음",
+      "importedAll": "{count, plural, other {Prompt #개를 가져왔습니다}}",
+      "analyzing": "지금 분석하고 있습니다. 주제와 위치는 모든 Prompts의 편집에서 설정하세요.",
+      "nextRun": "다음 추적 실행 때 반영됩니다.",
+      "failed": "가져오기에 실패했습니다. 다시 시도해 주세요."
+    },
+    "workStatus": {
+      "todo": "할 일",
+      "in_progress": "진행 중",
+      "done": "완료",
+      "set": "상태 설정",
+      "setLabel": "작업 상태 설정",
+      "none": "상태 없음"
+    },
+    "detail": {
+      "presets": {
+        "24h": "24시간",
+        "7d": "7일",
+        "30d": "30일",
+        "90d": "90일"
+      },
+      "unknownModel": "알 수 없음",
+      "sentiment": {
+        "positive": "긍정",
+        "neutral": "중립",
+        "negative": "부정"
+      },
+      "active": "활성",
+      "paused": "일시중지됨",
+      "lastRun": "최근 실행: {time}",
+      "loadFailed": "Prompt 세부 정보를 불러오지 못했습니다",
+      "errorTitle": "이 Prompt를 불러오지 못했습니다",
+      "retry": "다시 시도",
+      "notFoundTitle": "Prompt를 찾을 수 없습니다",
+      "notFoundBody": "이 Prompt는 삭제되었거나 존재하지 않을 수 있습니다.",
+      "goBack": "돌아가기",
+      "statusUpdateFailed": "상태를 업데이트하지 못했습니다",
+      "opportunitiesLoadFailed": "콘텐츠 기회를 불러오지 못했습니다",
+      "kpi": {
+        "visibility": "가시성 — {total, plural, one {#개} other {#개}} 답변 중 {mentioned}개에서 언급, {cited}개에서 인용",
+        "mentions": "멘션",
+        "citations": "인용"
+      },
+      "results": {
+        "title": "플랫폼별 결과",
+        "summary": "플랫폼 및 모델별로 그룹화된 {count, plural, one {#개} other {#개}}의 결과입니다.",
+        "empty": "이 Prompt에 대한 추적 결과가 아직 없습니다.",
+        "emptyRange": "선택한 기간에 결과가 없습니다.",
+        "showAll": "모든 데이터 보기"
+      },
+      "group": {
+        "runs": "{count, plural, one {#회 실행} other {#회 실행}}",
+        "mentions": "멘션",
+        "citations": "인용",
+        "runsHeading": "실행 기록",
+        "mentionCount": "{count, plural, one {<n>#</n><l>회 멘션</l>} other {<n>#</n><l>회 멘션</l>}}",
+        "citationCount": "{count, plural, one {<n>#</n><l>회 인용</l>} other {<n>#</n><l>회 인용</l>}}",
+        "showResponse": "답변 보기",
+        "hideResponse": "답변 숨기기",
+        "openFullPage": "전체 페이지로 열기",
+        "showingLatest": "이 플랫폼의 {total, plural, one {#회} other {#회}} 실행 중 최근 {shown}회를 표시합니다."
+      },
+      "sources": {
+        "title": "상위 출처",
+        "description": "AI 플랫폼이 이 Prompt에 답변할 때 인용하는 출처입니다.",
+        "filterPlaceholder": "도메인, URL 또는 제목으로 필터링...",
+        "domainsTab": "도메인 ({count})",
+        "urlsTab": "URL ({count})",
+        "rank": "순위",
+        "domain": "도메인",
+        "url": "URL",
+        "platforms": "플랫폼",
+        "usage": "사용량",
+        "citations": "인용",
+        "openDomain": "새 탭에서 {domain} 열기",
+        "openCitedPage": "새 탭에서 인용된 페이지 열기",
+        "openCitedPageTitle": "인용된 페이지 열기"
+      },
+      "notes": {
+        "title": "메모",
+        "description": "이 Prompt와 관련된 작업을 기록하세요 — 게시한 것, 계획한 것, 결정한 것.",
+        "placeholder": "예: 이 Prompt를 겨냥한 비교 블로그 글을 게시함…",
+        "add": "메모 추가",
+        "empty": "아직 메모가 없습니다 — 위에서 첫 메모를 추가하세요.",
+        "emptyReadOnly": "아직 메모가 없습니다.",
+        "unknownAuthor": "알 수 없음",
+        "delete": "메모 삭제",
+        "addFailed": "메모를 추가하지 못했습니다",
+        "deleteFailed": "메모를 삭제하지 못했습니다"
+      },
+      "targets": {
+        "title": "타겟 URL",
+        "description": "이 Prompt에서 AI 답변이 인용하기를 원하는 페이지입니다. 새 추적 결과가 들어오면 인용 상태가 자동으로 업데이트됩니다.",
+        "add": "추가",
+        "empty": "아직 타겟 URL이 없습니다 — 인용되기를 원하는 페이지를 추가하세요.",
+        "emptyReadOnly": "아직 타겟 URL이 없습니다.",
+        "remove": "타겟 URL 제거",
+        "addFailed": "URL을 추가하지 못했습니다",
+        "removeFailed": "URL을 제거하지 못했습니다",
+        "notCited": "아직 인용되지 않음",
+        "cited": "인용 ×{count}",
+        "citedIn": "{count, plural, one {#개 답변에서 인용됨} other {#개 답변에서 인용됨}}",
+        "first": "최초 {date}",
+        "last": "최근 {date}",
+        "alreadyCited": "타겟으로 지정하기 전부터 인용되고 있었음"
+      },
+      "opportunities": {
+        "title": "콘텐츠 기회",
+        "description": "이 Prompt에서 발견되어 조치를 기다리는 기회입니다.",
+        "loadFailed": "콘텐츠 기회를 불러오지 못했습니다.",
+        "empty": "이 Prompt에 열린 기회가 없습니다.",
+        "briefReady": "브리프 준비됨",
+        "viewAll": "모두 보기 ({total})"
+      }
     }
   },
   "volumeEstimate": {
@@ -18740,6 +19042,7 @@
           "nextTag": "· 다음 단계"
         },
         "unit": "<b>1 slot</b> = 해당 플랫폼의 1개 위치에서 매일 추적되는 Prompt 1개입니다.",
+        "unitInfo": "slot이란?",
         "columns": {
           "platform": "플랫폼",
           "included": "요금제 포함",
@@ -18786,6 +19089,7 @@
       },
       "summary": "Prompt 위치 {prompts}개 · 브랜드 {brands}개",
       "review": "검토 및 결제",
+      "reviewPrice": "검토 후 결제 {price}",
       "reviewing": "가격 확인 중…",
       "dialog": {
         "title": "추가 항목 검토",
@@ -18837,6 +19141,7 @@
         "title": "내 추가 항목",
         "onePayment": "일시불",
         "plan": "{plan} 요금제",
+        "planSub": "이미 구독에 포함됨 · 변경 없음",
         "slots": "{platform} 추가 추적",
         "slotsCount": "{slots} slots",
         "remove": "{item} 제거",
@@ -18846,7 +19151,8 @@
         "topUp": "AI 사용량 {multiplier}배 · {date}까지",
         "total": "다음 갱신부터 {interval, select, year {연간} other {월간}} 합계 <b>{price}</b>",
         "undoAll": "모든 변경 사항 취소",
-        "dueToday": "오늘 결제 금액: 이번 기간의 남은 기간 동안 추가된 항목의 요금이며, 검토 및 결제 화면에 표시됩니다."
+        "dueToday": "오늘 결제 금액: 이번 기간의 남은 기간 동안 추가된 항목의 요금이며, 검토 및 결제 화면에 표시됩니다.",
+        "dueTodayAmount": "오늘 결제: 추가 항목의 이번 기간 남은 기간분 <b>{price}</b>."
       }
     },
     "cancelsOn": "구독이 {date}에 종료됩니다",

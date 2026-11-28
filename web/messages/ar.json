@@ -467,6 +467,12 @@
     }
   },
   "onboarding": {
+    "theme": {
+      "label": "المظهر",
+      "light": "فاتح",
+      "dark": "داكن",
+      "hint": "يمكنك تغييره في أي وقت من زر ☀︎/☾ بجانب الشعار في القائمة."
+    },
     "setup": {
       "brandTitle": "إعداد علامتك التجارية",
       "brandIntro": "تعرّف على كيفية تحدث منصات الذكاء الاصطناعي عنك. أضف علامتك التجارية الأولى للبدء.",
@@ -553,6 +559,30 @@
     }
   },
   "planOffer": {
+    "why": {
+      "label": "لماذا Ansvisor",
+      "answers": {
+        "title": "إجابات حقيقية، لا تخمينات",
+        "body": "اطّلع على إجابات الذكاء الاصطناعي وراء كل رقم وطريقة حسابه. مفتوح المصدر."
+      },
+      "actions": {
+        "title": "إجراءات، لا تقارير فقط",
+        "body": "كل نتيجة تتحول إلى مهمة، وينجز الوكلاء كثيرًا منها نيابةً عنك."
+      },
+      "price": {
+        "title": "سعر واضح",
+        "body": "تدفع مقابل الـ Prompts التي تتابعها على كل منصة. أضف المزيد عند الحاجة."
+      },
+      "results": {
+        "title": "نتائج يمكنك عرضها",
+        "body": "الظهور وزيارات الذكاء الاصطناعي بمرور الوقت، في تقارير يمكنك مشاركتها."
+      }
+    },
+    "checkoutCanceled": {
+      "title": "لم تكتمل عملية الدفع، لذا لم يتم خصم أي مبلغ.",
+      "body": "يمكنك المحاولة مرة أخرى متى كنت مستعدًا.",
+      "bodyDemo": "يمكنك المحاولة مرة أخرى متى كنت مستعدًا، أو استكشاف العلامة التجارية التجريبية أولًا دون الحاجة إلى بطاقة."
+    },
     "buyNow": "اشترِ الآن",
     "startTrial": "ابدأ تجربة مجانية لمدة {days} يومًا",
     "fullPlan": "الخطة الكاملة من اليوم الأول",
@@ -943,6 +973,7 @@
         "impact": "تأثير {level}",
         "effort": "حوالي {effort}",
         "steps": "تم إنجاز {done} من أصل {total} خطوات",
+        "past": "سابقًا: حسّن {improved} من {results} إجراءات مشابهة النتائج",
         "firstStep": "الخطوة الأولى: {step}",
         "start": "بدء",
         "continue": "متابعة",
@@ -1236,6 +1267,9 @@
         "goal_reached": "تم تحقيق الهدف"
       },
       "pointsChange": "{value} نقطة",
+      "notes": {
+        "no_revenue": "لم تُبلغ Google Analytics عن أي إيرادات؛ يتطلب ذلك تتبع التجارة الإلكترونية"
+      },
       "score": "{value}/100",
       "vsGoalAria": "{progress}% من الهدف",
       "editKpis": "تعديل مؤشرات الأداء الرئيسية",
@@ -1311,6 +1345,7 @@
       "targetAria": "المستهدف لـ {name}",
       "invalidTarget": "يجب أن تكون الأهداف موجبة، ولا يمكن أن تتجاوز أهداف النسبة المئوية والدرجة 100.",
       "scoreSuffix": "/100",
+      "needsGa": "يتطلب Google Analytics",
       "callout": {
         "title": "سيقود إطار عمل مؤشرات الأداء الرئيسية هذا مركز الإجراءات لديك.",
         "description": "تُرتب الإجراءات والتوصيات حسب الأولوية بناءً على أهداف مؤشرات الأداء الرئيسية الخاصة بك."
@@ -1341,6 +1376,14 @@
       "ai_referral_traffic": {
         "name": "حركة الإحالة من الذكاء الاصطناعي",
         "description": "الزيارات الواردة من منصات الذكاء الاصطناعي"
+      },
+      "ai_conversions": {
+        "name": "تحويلات الذكاء الاصطناعي",
+        "description": "الأحداث الرئيسية من الجلسات المُحالة من الذكاء الاصطناعي (Google Analytics)"
+      },
+      "ai_revenue": {
+        "name": "إيرادات الذكاء الاصطناعي",
+        "description": "الإيرادات من الجلسات المُحالة من الذكاء الاصطناعي (Google Analytics)"
       },
       "positive_sentiment": {
         "name": "الانطباع الإيجابي",
@@ -2122,6 +2165,8 @@
       "noOpen": "لا توجد إجراءات مفتوحة. الإجراءات المكتملة والمستبعدة ضمن كل الحالات.",
       "showAllStatuses": "عرض كل الحالات",
       "summary": {
+        "refreshed": "تم تحديث {count} هذا الأسبوع",
+        "refreshedHint": "تم استبدالها خلال آخر {days} يومًا بإجراء جديد مبني على بيانات حديثة، لأنه لم يعمل عليها أحد لمدة 30 يومًا.",
         "open": "{count} قيد الفتح",
         "closed": "{count} تم إغلاقها هذا الأسبوع",
         "closedHint": "تم إكمالها أو تجاهلها خلال آخر {days} يوم. انقر لعرضها.",
@@ -2150,9 +2195,10 @@
         },
         "notScored": "لم يُقيَّم بعد",
         "why": "لماذا هذه الأولوية؟",
+        "pastTag": "نجح {improved} من {results}",
         "lowConfidence": {
-          "tip": "استناداً إلى {why}. الثقة جزء واحد فقط من الدرجة، لذا قد يظل التأثير والطلب يرفعان ترتيبه. تحقق منه قبل اتخاذ إجراء.",
-          "sentTip": "تم التقييم بناءً على ما أُرسل معه، وليس على نتائج مكتشفة. تحقق منه قبل اتخاذ إجراء."
+          "tip": "استنادًا إلى {why}. يمكن أن يضيف Google Analytics أو Search Console أو تدقيق الموقع نوعًا ثانيًا من الأدلة. هذا جزء واحد فقط من النتيجة؛ ويحدد الأثر والطلب الترتيب أيضًا.",
+          "sentTip": "قُيِّم بناءً على ما أُرسل معه، وليس على نتائج مكتشفة."
         },
         "reason": {
           "change": {
@@ -2208,10 +2254,11 @@
           "sources": "مؤكد من {count} مصادر",
           "confidence": {
             "line": "{level} — {why}.",
-            "low": "مستوى ثقة منخفض",
-            "medium": "مستوى ثقة متوسط",
-            "high": "مستوى ثقة مرتفع",
+            "low": "مصدر واحد",
+            "medium": "مؤكَّد",
+            "high": "مؤكَّد بقوة",
             "found": "{kinds, plural, zero {لا توجد نتائج} one {نوع واحد من النتائج} two {نوعان من النتائج} few {# أنواع من النتائج} many {# نوعًا من النتائج} other {# نوع من النتائج}}{sources, plural, =0 {} one { من مصدر واحد} two { من مصدرين} few { من # مصادر} many { من # مصدرًا} other { من # مصدر}}",
+            "held": "{found}{nights, plural, =0 {} zero {} one {، رُصدت ليلة واحدة} two {، رُصدت ليلتين متتاليتين} few {، رُصدت # ليالٍ متتالية} many {، رُصدت # ليلة متتالية} other {، رُصدت # ليلة متتالية}}{prompts, plural, =0 {} zero {} one { في Prompt واحد} two { عبر اثنين من Prompts} few { عبر # Prompts} many { عبر # Prompt} other { عبر # Prompt}}",
             "sent": "تم التقييم استنادًا إلى ما أُرسل معه، وليس من النتائج المكتشفة"
           },
           "sentence": {
@@ -10672,6 +10719,7 @@
       "sectionLabel": "المقاييس الرئيسية",
       "noData": "لا توجد بيانات",
       "viewBreakdown": "{metric}: عرض التفاصيل",
+      "howCalculated": "{metric}: كيف يُحسب هذا؟",
       "openPrompts": "الـ Prompts التي يتم تتبعها: فتح Prompts",
       "openCitations": "الإشارات المرجعية: فتح الإشارات المرجعية",
       "openMentions": "الإشارات: فتح الإشارات",
@@ -15893,6 +15941,10 @@
     "loadError": "تعذر تحميل الـ Prompts الخاصة بك.",
     "visibilityDegraded": "أرقام الظهور غير متاحة مؤقتًا — يتم عرض الـ Prompts بدونها.",
     "positions": {
+      "slots": {
+        "note": "غير متوفر في خطتك حاليًا · أضف slots للتتبع لتتبع نتائج {platform} ومراكزها.",
+        "add": "إضافة slots"
+      },
       "answers": "{count, plural, zero {لا توجد إجابات} one {إجابة واحدة} two {إجابتان} few {# إجابات} many {# إجابة} other {# إجابة}}",
       "answersInPeriod": "{count, plural, zero {لا توجد إجابات} one {إجابة واحدة} two {إجابتان} few {# إجابات} many {# إجابة} other {# إجابة}} في هذه الفترة",
       "mentionedIn": "في {mentioned} من {answers, plural, zero {لا توجد إجابات} one {إجابة واحدة} two {إجابتين} few {# إجابات} many {# إجابة} other {# إجابة}} · {mentions, plural, zero {لا توجد إشارات} one {إشارة واحدة} two {إشارتان} few {# إشارات} many {# إشارة} other {# إشارة}}",
@@ -16572,6 +16624,256 @@
       "noRoomToResume": "لا توجد مساحة كافية للاستئناف",
       "bulkFailed": "{action, select, resume {فشل استئناف الـPrompts.} other {فشل إيقاف الـPrompts مؤقتًا.}}",
       "bulkPartial": "{action, select, resume {تعذّر استئناف {failed} من {total}.} other {تعذّر إيقاف {failed} من {total} مؤقتًا.}}"
+    },
+    "positionsSheet": {
+      "tracked": "Prompt متتبَّع",
+      "paused": "متوقف مؤقتًا",
+      "improvingTitle": "افتح الإجراء ونتيجته",
+      "improving": "قيد التحسين · {code}",
+      "window": "{preset, select, custom {نطاق مخصص} other {آخر {preset}}}",
+      "lastRun": "آخر تشغيل: {at}",
+      "runs": "{count, plural, zero {# عمليات تشغيل} one {تشغيل واحد} two {تشغيلان} few {# عمليات تشغيل} many {# تشغيلًا} other {# تشغيل}}",
+      "period": "الفترة",
+      "discardNote": "سيؤدي تغيير الفترة إلى تجاهل تعديلات التحسين غير المرسلة.",
+      "keepEditing": "متابعة التعديل",
+      "discard": "تجاهل وتغيير",
+      "seeAnswers": "عرض إجابات الذكاء الاصطناعي",
+      "back": "العودة إلى Prompts",
+      "loading": "جارٍ تحميل المواضع",
+      "loadError": "تعذّر تحميل المواضع: {message}",
+      "retry": "إعادة المحاولة",
+      "noLongerAvailable": "هذا الـ Prompt لم يعد متاحًا.",
+      "loadFailed": "فشل تحميل المواضع.",
+      "sentimentUnavailable": "المشاعر غير متاحة",
+      "sentiment": {
+        "positive": "إيجابية",
+        "neutral": "محايدة",
+        "negative": "سلبية"
+      },
+      "notMentioned": "غير مذكور",
+      "mentioned": "مذكور",
+      "positionUnavailable": "الموضع غير متاح",
+      "notCited": "غير مستشهد به",
+      "cited": "مستشهد به",
+      "locked": {
+        "growth": "متاح في خطة Growth",
+        "notEnabled": "غير مفعّل لمساحة العمل هذه",
+        "enterprise": "متاح في خطة Enterprise",
+        "line": "{note} · {growth, select, yes {قم بالترقية} other {تواصل معنا}} لتتبع نتائج {platform} ومواضعها."
+      },
+      "upgrade": "ترقية",
+      "contactUs": "تواصل معنا",
+      "improve": "تحسين",
+      "stat": {
+        "platformsAnswered": "المنصات التي أجابت",
+        "inLatestRun": "في آخر تشغيل لها",
+        "mentionedOn": "مذكور في",
+        "citedOn": "مستشهد به في",
+        "platforms": "منصات",
+        "avgPosition": "متوسط الموضع",
+        "whenMentioned": "عند الذكر",
+        "whenMentionedSources": "عند الذكر · {avg} في المصادر",
+        "runs": "مرات التشغيل",
+        "trackedOf": "{tracked} من {count, plural, zero {# يوم} one {يوم واحد} two {يومين} few {# أيام} many {# يومًا} other {# يوم}} تمت متابعتها",
+        "mentioned": "تم الذكر",
+        "cited": "تم الاستشهاد",
+        "ofDays": "{n} / {count, plural, zero {# يوم} one {يوم واحد} two {يومين} few {# أيام} many {# يومًا} other {# يوم}}",
+        "notMentionedCount": "{count} بدون ذكر",
+        "notCitedCount": "{count} بدون استشهاد"
+      },
+      "tabs": {
+        "platforms": "نتائج المنصات",
+        "history": "السجل اليومي ({count})"
+      },
+      "runAt": "وقت التشغيل: {at}",
+      "noRuns": "لا توجد عمليات تتبع مكتملة في هذه الفترة",
+      "noRunsDot": "لا توجد عمليات تتبع مكتملة في هذه الفترة.",
+      "mention": "ذكر",
+      "citation": "استشهاد",
+      "detectedEarlier": "تم اكتشافه سابقًا في هذه الفترة",
+      "untracked": "{count, plural, zero {# يوم} one {يوم واحد} two {يومان} few {# أيام} many {# يومًا} other {# يوم}} بدون تشغيل مكتمل. لا تُحتسب الأيام غير المتتبعة كأيام بدون ذكر أو بدون استشهاد.",
+      "blocksNote": "تمثل كل كتلة يومًا واحدًا في النطاق المحدد، بحسب منطقتك الزمنية. مرّر المؤشر فوق كتلة لعرض مواضع ذلك اليوم، وافتح منصة لعرض كل عمليات التشغيل.",
+      "legend": {
+        "Early": "ذكر مبكر",
+        "Mid": "متوسط",
+        "Late": "متأخر",
+        "cited": "استشهاد فقط",
+        "none": "لا توجد نتيجة",
+        "untracked": "غير متتبع"
+      },
+      "tone": {
+        "Early": "مبكر",
+        "Mid": "متوسط",
+        "Late": "متأخر"
+      },
+      "tip": {
+        "share": " في {n} من {runs} عملية تشغيل",
+        "rankOf": "#{rank} من {total}"
+      },
+      "heatmapLabel": "{platform}: تم الذكر في {mentioned} والاستشهاد في {cited} من أصل {count, plural, zero {# يوم متتبع} one {يوم متتبع واحد} two {يومين متتبعين} few {# أيام متتبعة} many {# يومًا متتبعًا} other {# يوم متتبع}}",
+      "trio": {
+        "best": "الأفضل",
+        "worst": "الأسوأ",
+        "avg": "المتوسط",
+        "none": "لا يوجد موضع ذكر",
+        "title": "الموضع عند الذكر"
+      },
+      "runsNote": "{runs} عملية تشغيل · تم الذكر في {mentioned} · تم الاستشهاد في {cited}",
+      "noData": "لا توجد بيانات تتبع لهذه الفترة",
+      "toggle": "{open, select, yes {إخفاء} other {عرض}} نتائج {platform} اليومية",
+      "runsOnDays": "{runs, plural, zero {# عملية تشغيل} one {عملية تشغيل واحدة} two {عمليتا تشغيل} few {# عمليات تشغيل} many {# عملية تشغيل} other {# عملية تشغيل}} في {days, plural, zero {# يوم} one {يوم واحد} two {يومين} few {# أيام} many {# يومًا} other {# يوم}}",
+      "sentimentLine": " · المشاعر في الإجابات التي تذكر العلامة: {positive} إيجابية، {neutral} محايدة، {negative} سلبية",
+      "sentimentUnavailableTail": "، {count} غير متاحة",
+      "moreDays": "عرض {count} أيام إضافية",
+      "platformsAnswered": "{count, plural, zero {لم تُجب أي منصة} one {أجابت منصة واحدة} two {أجابت منصتان} few {أجابت # منصات} many {أجابت # منصة} other {أجابت # منصة}}"
+    },
+    "bulkImport": {
+      "intro": "ضع الـ Prompts في <b>عمود واحد</b>، بحيث يكون في كل صف Prompt واحد، من الأعلى إلى الأسفل. يُقرأ الصف الأول المعنون <b>Prompt</b> على أنه صف العناوين (اختياري). تستخدم الـ Prompts المستوردة المنصات المحددة ضمن «فردي» وموقع العلامة التجارية؛ حدّد موضوع كل منها وموقعه لاحقًا عبر «تعديل» في «كل الـ Prompts».",
+      "drop": "أفلت ملف .xlsx أو .csv، أو انقر للاستعراض",
+      "perRow": "Prompt واحد في كل صف · حتى {max} صف",
+      "template": "تنزيل القالب",
+      "chooseFile": "اختر ملف .xlsx أو .csv.",
+      "unreadable": "تعذرت قراءة هذا الملف. تأكد من أنه ملف .xlsx أو .csv صالح.",
+      "counts": "<b>{valid} صالح</b> · {duplicates, plural, zero {# مكرر} one {# مكرر} two {# مكرران} few {# مكررة} many {# مكررًا} other {# مكرر}} · {errors, plural, zero {# أخطاء} one {# خطأ} two {# خطآن} few {# أخطاء} many {# خطأً} other {# خطأ}}",
+      "inUse": "· {used} / {max} من مواقع الـ Prompts قيد الاستخدام",
+      "truncated": "تمت قراءة أول {max} صف فقط؛ وتم استبعاد {more} صف إضافي. يرجى تقسيم الملفات الأكبر.",
+      "extraColumns": "تتم قراءة عمود الـ Prompt فقط؛ وتم تجاهل بقية أعمدة الملف.",
+      "noneImportable": "لا يمكن استيراد أي Prompts. تتيح باقتك {plan} تتبع ما يصل إلى {max} من مواقع الـ Prompts، و{used} منها قيد الاستخدام بالفعل.",
+      "someImportable": "سيتم استيراد {valid} فقط من أصل {total} من Prompts. تتيح باقتك {plan} تتبّع ما يصل إلى {max} من مواقع Prompts، وقد تم استخدام {used} منها بالفعل. لن يتم استيراد {count, plural, zero {# من Prompts} one {Prompt واحد} two {Promptين} few {# Prompts} many {# Prompt} other {# Prompts}} المتبقية (بدءًا من الصف {row}).",
+      "toAddMore": "لإضافة المزيد من الـ Prompts، {starter, select, yes {قم بترقية باقتك} other {تواصل معنا}}.",
+      "head": {
+        "row": "الصف",
+        "prompt": "Prompt",
+        "status": "الحالة"
+      },
+      "status": {
+        "valid": "صالح",
+        "duplicate": "مكرر",
+        "error": "خطأ",
+        "over_limit": "تجاوز حد الباقة"
+      },
+      "reason": {
+        "empty": "Prompt فارغ",
+        "tooLong": "أطول من {max} حرف",
+        "duplicate": "متتبَّع بالفعل أو مكرر في الملف"
+      },
+      "downloadNotImported": "تنزيل الـ Prompts غير المستوردة (.csv)",
+      "downloadErrors": "تنزيل الأخطاء (.csv)",
+      "importButton": "استيراد {count, plural, zero {# Prompt} one {Prompt واحد} two {Promptين} few {# Prompts} many {# Prompt} other {# Prompt}}",
+      "importedSome": "تم استيراد {imported} · لم يتم استيراد {notImported} بسبب حد الباقة",
+      "importedAll": "{count, plural, zero {لم يتم استيراد أي Prompt} one {تم استيراد Prompt واحد} two {تم استيراد Promptين} few {تم استيراد # Prompts} many {تم استيراد # Prompt} other {تم استيراد # Prompt}}",
+      "analyzing": "جارٍ تحليلها الآن. حدّد المواضيع والمواقع عبر «تعديل» في «كل الـ Prompts».",
+      "nextRun": "سيتم التقاطها في دورة التتبع التالية.",
+      "failed": "فشل الاستيراد. يرجى المحاولة مرة أخرى."
+    },
+    "workStatus": {
+      "todo": "للتنفيذ",
+      "in_progress": "قيد التنفيذ",
+      "done": "مكتمل",
+      "set": "تعيين الحالة",
+      "setLabel": "تعيين حالة العمل",
+      "none": "بدون حالة"
+    },
+    "detail": {
+      "presets": {
+        "24h": "24 ساعة",
+        "7d": "7 أيام",
+        "30d": "30 يومًا",
+        "90d": "90 يومًا"
+      },
+      "unknownModel": "غير معروف",
+      "sentiment": {
+        "positive": "إيجابي",
+        "neutral": "محايد",
+        "negative": "سلبي"
+      },
+      "active": "نشط",
+      "paused": "متوقف مؤقتًا",
+      "lastRun": "آخر تشغيل: {time}",
+      "loadFailed": "تعذّر تحميل تفاصيل الـ Prompt",
+      "errorTitle": "تعذّر تحميل هذا الـ Prompt",
+      "retry": "إعادة المحاولة",
+      "notFoundTitle": "لم يتم العثور على الـ Prompt",
+      "notFoundBody": "ربما حُذف هذا الـ Prompt أو أنه غير موجود.",
+      "goBack": "الرجوع",
+      "statusUpdateFailed": "تعذّر تحديث الحالة",
+      "opportunitiesLoadFailed": "تعذّر تحميل فرص المحتوى",
+      "kpi": {
+        "visibility": "الظهور — ذُكر في {mentioned} من {total, plural, zero {# إجابة} one {إجابة واحدة} two {إجابتين} few {# إجابات} many {# إجابة} other {# إجابة}}، واستُشهد به في {cited}",
+        "mentions": "الإشارات",
+        "citations": "الاستشهادات"
+      },
+      "results": {
+        "title": "النتائج حسب المنصة",
+        "summary": "{count, plural, zero {# نتيجة} one {نتيجة واحدة} two {نتيجتان} few {# نتائج} many {# نتيجة} other {# نتيجة}} مجمّعة حسب المنصة والنموذج.",
+        "empty": "لا توجد نتائج تتبّع لهذا الـ Prompt بعد.",
+        "emptyRange": "لا توجد نتائج في النطاق الزمني المحدد.",
+        "showAll": "عرض كل البيانات"
+      },
+      "group": {
+        "runs": "{count, plural, zero {# عملية تشغيل} one {عملية تشغيل واحدة} two {عمليتا تشغيل} few {# عمليات تشغيل} many {# عملية تشغيل} other {# عملية تشغيل}}",
+        "mentions": "الإشارات",
+        "citations": "الاستشهادات",
+        "runsHeading": "عمليات التشغيل",
+        "mentionCount": "{count, plural, zero {<n>#</n><l> إشارة</l>} one {<n>#</n><l> إشارة</l>} two {<n>#</n><l> إشارة</l>} few {<n>#</n><l> إشارات</l>} many {<n>#</n><l> إشارة</l>} other {<n>#</n><l> إشارة</l>}}",
+        "citationCount": "{count, plural, zero {<n>#</n><l> استشهاد</l>} one {<n>#</n><l> استشهاد</l>} two {<n>#</n><l> استشهاد</l>} few {<n>#</n><l> استشهادات</l>} many {<n>#</n><l> استشهادًا</l>} other {<n>#</n><l> استشهاد</l>}}",
+        "showResponse": "عرض الإجابة",
+        "hideResponse": "إخفاء الإجابة",
+        "openFullPage": "فتح الصفحة كاملة",
+        "showingLatest": "يتم عرض أحدث {shown} من {total, plural, zero {# عملية تشغيل} one {عملية تشغيل واحدة} two {عمليتي تشغيل} few {# عمليات تشغيل} many {# عملية تشغيل} other {# عملية تشغيل}} لهذه المنصة."
+      },
+      "sources": {
+        "title": "أهم المصادر",
+        "description": "المصادر التي تستشهد بها منصات الذكاء الاصطناعي عند الإجابة عن هذا الـ Prompt.",
+        "filterPlaceholder": "التصفية حسب النطاق أو عنوان URL أو العنوان...",
+        "domainsTab": "النطاقات ({count})",
+        "urlsTab": "عناوين URL ({count})",
+        "rank": "المرتبة",
+        "domain": "النطاق",
+        "url": "URL",
+        "platforms": "المنصات",
+        "usage": "الاستخدام",
+        "citations": "الاستشهادات",
+        "openDomain": "فتح {domain} في علامة تبويب جديدة",
+        "openCitedPage": "فتح الصفحة المستشهد بها في علامة تبويب جديدة",
+        "openCitedPageTitle": "فتح الصفحة المستشهد بها"
+      },
+      "notes": {
+        "title": "الملاحظات",
+        "description": "تابِع العمل الخاص بهذا الـ Prompt — ما نُشر أو خُطط له أو تقرّر.",
+        "placeholder": "مثال: نشرنا مقالة مقارنة في المدونة تستهدف هذا الـ Prompt…",
+        "add": "إضافة ملاحظة",
+        "empty": "لا توجد ملاحظات بعد — أضف أول ملاحظة أعلاه.",
+        "emptyReadOnly": "لا توجد ملاحظات بعد.",
+        "unknownAuthor": "غير معروف",
+        "delete": "حذف الملاحظة",
+        "addFailed": "تعذّرت إضافة الملاحظة",
+        "deleteFailed": "تعذّر حذف الملاحظة"
+      },
+      "targets": {
+        "title": "عناوين URL المستهدفة",
+        "description": "الصفحات التي تريد أن تستشهد بها إجابات الذكاء الاصطناعي لهذا الـ Prompt. تتحدّث حالة الاستشهاد تلقائيًا مع وصول نتائج تتبّع جديدة.",
+        "add": "إضافة",
+        "empty": "لا توجد عناوين URL مستهدفة بعد — أضف الصفحات التي تريد أن يُستشهد بها.",
+        "emptyReadOnly": "لا توجد عناوين URL مستهدفة بعد.",
+        "remove": "إزالة عنوان URL المستهدف",
+        "addFailed": "تعذّرت إضافة عنوان URL",
+        "removeFailed": "تعذّرت إزالة عنوان URL",
+        "notCited": "لم يُستشهد به بعد",
+        "cited": "مُستشهد به ×{count}",
+        "citedIn": "{count, plural, zero {استُشهد به في # إجابة} one {استُشهد به في إجابة واحدة} two {استُشهد به في إجابتين} few {استُشهد به في # إجابات} many {استُشهد به في # إجابة} other {استُشهد به في # إجابة}}",
+        "first": "أول مرة {date}",
+        "last": "آخر مرة {date}",
+        "alreadyCited": "كان مُستشهدًا به قبل استهدافه"
+      },
+      "opportunities": {
+        "title": "فرص المحتوى",
+        "description": "الفرص التي حُدّدت لهذا الـ Prompt وتنتظر إجراءً.",
+        "loadFailed": "تعذّر تحميل فرص المحتوى.",
+        "empty": "لا توجد فرص مفتوحة لهذا الـ Prompt.",
+        "briefReady": "الملخص جاهز",
+        "viewAll": "عرض الكل ({total})"
+      }
     }
   },
   "volumeEstimate": {
@@ -18750,6 +19052,7 @@
           "nextTag": "· التالية"
         },
         "unit": "<b>1 slot</b> = 1 Prompt يتم تتبعه في موقع واحد على تلك المنصة، كل يوم.",
+        "unitInfo": "ما هو الـ slot؟",
         "columns": {
           "platform": "المنصة",
           "included": "في خطتك",
@@ -18796,6 +19099,7 @@
       },
       "summary": "{prompts} مواقع Prompts · {brands} علامات تجارية",
       "review": "مراجعة والدفع",
+      "reviewPrice": "راجع وادفع {price}",
       "reviewing": "جارٍ التحقق من السعر…",
       "dialog": {
         "title": "مراجعة الإضافات الخاصة بك",
@@ -18847,6 +19151,7 @@
         "title": "إضافاتك",
         "onePayment": "دفعة واحدة",
         "plan": "خطة {plan}",
+        "planSub": "مضمّن بالفعل في اشتراكك · بلا تغيير",
         "slots": "تتبع إضافي لـ {platform}",
         "slotsCount": "{slots} slots",
         "remove": "إزالة {item}",
@@ -18856,7 +19161,8 @@
         "topUp": "استخدام AI بمقدار {multiplier}x · حتى {date}",
         "total": "الإجمالي {interval, select, year {السنوي} other {الشهري}} اعتبارًا من التجديد التالي <b>{price}</b>",
         "undoAll": "التراجع عن جميع التغييرات",
-        "dueToday": "المستحق اليوم: العناصر المضافة لبقية هذه الفترة، ويظهر في صفحة المراجعة والدفع."
+        "dueToday": "المستحق اليوم: العناصر المضافة لبقية هذه الفترة، ويظهر في صفحة المراجعة والدفع.",
+        "dueTodayAmount": "المستحق اليوم: <b>{price}</b> للعناصر المضافة، لبقية هذه الفترة."
       }
     },
     "cancelsOn": "ينتهي الاشتراك في {date}",

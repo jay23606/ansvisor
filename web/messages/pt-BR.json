@@ -467,6 +467,12 @@
     }
   },
   "onboarding": {
+    "theme": {
+      "label": "Tema",
+      "light": "Claro",
+      "dark": "Escuro",
+      "hint": "Mude quando quiser com ☀︎/☾ ao lado do logo no menu."
+    },
     "setup": {
       "brandTitle": "Configure sua marca",
       "brandIntro": "Veja como as plataformas de IA falam sobre você. Adicione sua primeira marca para começar.",
@@ -553,6 +559,30 @@
     }
   },
   "planOffer": {
+    "why": {
+      "label": "Por que a Ansvisor",
+      "answers": {
+        "title": "Respostas reais, não palpites",
+        "body": "Veja as respostas de IA por trás de cada número e como ele é calculado. Código aberto."
+      },
+      "actions": {
+        "title": "Ações, não apenas relatórios",
+        "body": "Cada descoberta vira uma tarefa. Agentes fazem muitas delas por você."
+      },
+      "price": {
+        "title": "Preço claro",
+        "body": "Você paga pelos Prompts que acompanha em cada plataforma. Adicione mais quando precisar."
+      },
+      "results": {
+        "title": "Resultados para mostrar",
+        "body": "Visibilidade e visitas de IA ao longo do tempo, em relatórios para compartilhar."
+      }
+    },
+    "checkoutCanceled": {
+      "title": "Seu pagamento não foi concluído, então nenhuma cobrança foi feita.",
+      "body": "Você pode tentar novamente quando estiver pronto.",
+      "bodyDemo": "Você pode tentar novamente quando estiver pronto ou explorar antes a marca de demonstração, sem precisar de cartão."
+    },
     "buyNow": "Comprar agora",
     "startTrial": "Iniciar teste grátis de {days} dias",
     "fullPlan": "Plano completo desde o primeiro dia",
@@ -943,6 +973,7 @@
         "impact": "Impacto {level}",
         "effort": "cerca de {effort}",
         "steps": "{done} de {total} etapas concluídas",
+        "past": "Antes: {improved} de {results} ações parecidas melhoraram os resultados",
         "firstStep": "Primeira etapa: {step}",
         "start": "Iniciar",
         "continue": "Continuar",
@@ -1236,6 +1267,9 @@
         "goal_reached": "Meta atingida"
       },
       "pointsChange": "{value} pts",
+      "notes": {
+        "no_revenue": "O Google Analytics não relatou receita; é preciso ter rastreamento de e-commerce"
+      },
       "score": "{value}/100",
       "vsGoalAria": "{progress}% da meta",
       "editKpis": "Editar KPIs",
@@ -1311,6 +1345,7 @@
       "targetAria": "Objetivo para {name}",
       "invalidTarget": "As metas devem ser positivas; metas de porcentagem e de pontuação não podem exceder 100.",
       "scoreSuffix": "/100",
+      "needsGa": "Requer Google Analytics",
       "callout": {
         "title": "Esta estrutura de KPIs direcionará sua Central de ações.",
         "description": "Ações e recomendações são priorizadas com base nas suas metas de KPI."
@@ -1341,6 +1376,14 @@
       "ai_referral_traffic": {
         "name": "Tráfego de referência de IA",
         "description": "Visitas provenientes de plataformas de IA"
+      },
+      "ai_conversions": {
+        "name": "Conversões de IA",
+        "description": "Eventos principais de sessões vindas de IA (Google Analytics)"
+      },
+      "ai_revenue": {
+        "name": "Receita de IA",
+        "description": "Receita de sessões vindas de IA (Google Analytics)"
       },
       "positive_sentiment": {
         "name": "Sentimento positivo",
@@ -2122,6 +2165,8 @@
       "noOpen": "Nenhuma ação aberta. As concluídas e dispensadas estão em Todos os status.",
       "showAllStatuses": "Mostrar todos os status",
       "summary": {
+        "refreshed": "{count} atualizadas esta semana",
+        "refreshedHint": "Substituídas nos últimos {days} dias por uma nova ação criada com dados recentes, porque ninguém trabalhou nelas por 30 dias.",
         "open": "{count} abertas",
         "closed": "{count} fechadas esta semana",
         "closedHint": "Concluídas ou descartadas nos últimos {days} dias. Clique para listá-las.",
@@ -2150,9 +2195,10 @@
         },
         "notScored": "Ainda não pontuado",
         "why": "Por que esta prioridade?",
+        "pastTag": "{improved} de {results} funcionaram",
         "lowConfidence": {
-          "tip": "Com base em {why}. A confiança é apenas uma parte da pontuação, então impacto e demanda ainda podem colocá-la no topo. Verifique antes de agir.",
-          "sentTip": "Avaliada com base no que foi enviado com ela, não em descobertas detectadas. Verifique antes de agir."
+          "tip": "Baseado em {why}. Google Analytics, Search Console ou uma auditoria do site podem adicionar um segundo tipo de evidência. Isso é só uma parte da pontuação; impacto e demanda também contam.",
+          "sentTip": "Avaliado pelo que foi enviado junto, não por descobertas detectadas."
         },
         "reason": {
           "change": {
@@ -2208,10 +2254,11 @@
           "sources": "confirmado por {count} fontes",
           "confidence": {
             "line": "{level} — {why}.",
-            "low": "Baixa confiança",
-            "medium": "Média confiança",
-            "high": "Alta confiança",
+            "low": "Fonte única",
+            "medium": "Confirmado",
+            "high": "Bem confirmado",
             "found": "{kinds, plural, one {um tipo de achado} other {# tipos de achado}}{sources, plural, =0 {} one { de uma fonte} other { de # fontes}}",
+            "held": "{found}{nights, plural, =0 {} one {, visto em # noite} other {, visto em # noites seguidas}}{prompts, plural, =0 {} one { em # Prompt} other { em # Prompts}}",
             "sent": "avaliado a partir do que foi enviado, não de achados detectados"
           },
           "sentence": {
@@ -10689,6 +10736,7 @@
       "sectionLabel": "Métricas principais",
       "noData": "Sem dados",
       "viewBreakdown": "{metric}: ver detalhamento",
+      "howCalculated": "{metric}: como isso é calculado?",
       "openPrompts": "Prompts monitorados: abrir Prompts",
       "openCitations": "Citações: abrir Citações",
       "openMentions": "Menções: abrir Menções",
@@ -15910,6 +15958,10 @@
     "loadError": "Não foi possível carregar seus Prompts.",
     "visibilityDegraded": "Os números de Visibilidade estão temporariamente indisponíveis — exibindo Prompts sem eles.",
     "positions": {
+      "slots": {
+        "note": "Ainda não está no seu plano · Adicione slots de rastreamento para acompanhar os resultados e as posições em {platform}.",
+        "add": "Adicionar slots"
+      },
       "answers": "{count, plural, one {# resposta} other {# respostas}}",
       "answersInPeriod": "{count, plural, one {# resposta} other {# respostas}} neste período",
       "mentionedIn": "Em {mentioned} de {answers, plural, one {# resposta} other {# respostas}} · {mentions, plural, one {# menção} other {# menções}}",
@@ -16589,6 +16641,256 @@
       "noRoomToResume": "Espaço insuficiente para retomar",
       "bulkFailed": "{action, select, resume {Falha ao retomar os Prompts.} other {Falha ao pausar os Prompts.}}",
       "bulkPartial": "{action, select, resume {{failed} de {total} não puderam ser retomados.} other {{failed} de {total} não puderam ser pausados.}}"
+    },
+    "positionsSheet": {
+      "tracked": "Prompt monitorado",
+      "paused": "Pausado",
+      "improvingTitle": "Abrir a ação e seu resultado",
+      "improving": "Em melhoria · {code}",
+      "window": "{preset, select, custom {Período personalizado} other {Últimos {preset}}}",
+      "lastRun": "Última execução: {at}",
+      "runs": "{count, plural, one {# execução} many {# execuções} other {# execuções}}",
+      "period": "Período",
+      "discardNote": "Alterar o período descartará as edições de Melhoria não enviadas.",
+      "keepEditing": "Continuar editando",
+      "discard": "Descartar e alterar",
+      "seeAnswers": "Ver respostas de IA",
+      "back": "Voltar para Prompts",
+      "loading": "Carregando posições",
+      "loadError": "Não foi possível carregar as posições: {message}",
+      "retry": "Tentar novamente",
+      "noLongerAvailable": "Este Prompt não está mais disponível.",
+      "loadFailed": "Falha ao carregar as posições.",
+      "sentimentUnavailable": "Sentimento indisponível",
+      "sentiment": {
+        "positive": "positivo",
+        "neutral": "neutro",
+        "negative": "negativo"
+      },
+      "notMentioned": "Não mencionado",
+      "mentioned": "Mencionado",
+      "positionUnavailable": "Posição indisponível",
+      "notCited": "Não citado",
+      "cited": "Citado",
+      "locked": {
+        "growth": "Disponível no Growth",
+        "notEnabled": "Não habilitado para este workspace",
+        "enterprise": "Disponível no Enterprise",
+        "line": "{note} · {growth, select, yes {Faça upgrade} other {Entre em contato}} para acompanhar os resultados e as posições em {platform}."
+      },
+      "upgrade": "Fazer upgrade",
+      "contactUs": "Entre em contato",
+      "improve": "Melhorar",
+      "stat": {
+        "platformsAnswered": "Plataformas que responderam",
+        "inLatestRun": "na última execução",
+        "mentionedOn": "Mencionado em",
+        "citedOn": "Citado em",
+        "platforms": "plataformas",
+        "avgPosition": "Posição média",
+        "whenMentioned": "quando mencionado",
+        "whenMentionedSources": "quando mencionado · {avg} nas fontes",
+        "runs": "Execuções",
+        "trackedOf": "{tracked} de {count, plural, one {# dia} other {# dias}} monitorados",
+        "mentioned": "Mencionado",
+        "cited": "Citado",
+        "ofDays": "{n} / {count, plural, one {# dia} other {# dias}}",
+        "notMentionedCount": "{count} sem menção",
+        "notCitedCount": "{count} sem citação"
+      },
+      "tabs": {
+        "platforms": "Resultados por plataforma",
+        "history": "Histórico diário ({count})"
+      },
+      "runAt": "Execução em {at}",
+      "noRuns": "Nenhuma execução de monitoramento concluída neste período",
+      "noRunsDot": "Nenhuma execução de monitoramento concluída neste período.",
+      "mention": "Menção",
+      "citation": "Citação",
+      "detectedEarlier": "Detectado anteriormente neste período",
+      "untracked": "{count, plural, one {# dia} other {# dias}} sem execução concluída. Dias sem monitoramento não contam como sem menção ou sem citação.",
+      "blocksNote": "Cada bloco representa um dia do intervalo selecionado, no seu fuso horário. Passe o cursor sobre um bloco para ver as posições do dia; abra uma plataforma para ver todas as execuções.",
+      "legend": {
+        "Early": "Mencionado no início",
+        "Mid": "Meio",
+        "Late": "Fim",
+        "cited": "Apenas citado",
+        "none": "Sem resultado",
+        "untracked": "Não monitorado"
+      },
+      "tone": {
+        "Early": "Início",
+        "Mid": "Meio",
+        "Late": "Fim"
+      },
+      "tip": {
+        "share": " em {n} de {runs} execuções",
+        "rankOf": "#{rank} de {total}"
+      },
+      "heatmapLabel": "{platform}: mencionado em {mentioned} e citado em {cited} de {count, plural, one {# dia monitorado} other {# dias monitorados}}",
+      "trio": {
+        "best": "Melhor",
+        "worst": "Pior",
+        "avg": "Méd.",
+        "none": "Sem posição de menção",
+        "title": "Posição quando mencionado"
+      },
+      "runsNote": "{runs} execuções · mencionado em {mentioned} · citado em {cited}",
+      "noData": "Sem dados de monitoramento para este período",
+      "toggle": "{open, select, yes {Ocultar} other {Mostrar}} resultados diários de {platform}",
+      "runsOnDays": "{runs, plural, one {# execução} other {# execuções}} em {days, plural, one {# dia} other {# dias}}",
+      "sentimentLine": " · sentimento nas respostas que mencionam: {positive} positivo(s), {neutral} neutro(s), {negative} negativo(s)",
+      "sentimentUnavailableTail": ", {count} indisponível(is)",
+      "moreDays": "Mostrar mais {count} dias",
+      "platformsAnswered": "{count, plural, one {# plataforma respondeu} other {# plataformas responderam}}"
+    },
+    "bulkImport": {
+      "intro": "Coloque seus Prompts em <b>uma coluna</b>, um Prompt por linha, de cima para baixo. Uma primeira linha com o título <b>Prompt</b> é lida como cabeçalho (opcional). Os Prompts importados usam as plataformas selecionadas em Individual e a localização da marca; defina o tópico e a localização de cada um depois, com Editar em Todos os Prompts.",
+      "drop": "Solte um arquivo .xlsx ou .csv ou clique para procurar",
+      "perRow": "Um Prompt por linha · até {max} linhas",
+      "template": "Baixar modelo",
+      "chooseFile": "Escolha um arquivo .xlsx ou .csv.",
+      "unreadable": "Não foi possível ler este arquivo. Verifique se é um arquivo .xlsx ou .csv válido.",
+      "counts": "<b>{valid} válido(s)</b> · {duplicates, plural, one {# duplicado} other {# duplicados}} · {errors, plural, one {# erro} other {# erros}}",
+      "inUse": "· {used} / {max} localizações de Prompts em uso",
+      "truncated": "Somente as primeiras {max} linhas foram lidas; {more} ficaram de fora. Divida arquivos maiores.",
+      "extraColumns": "Somente a coluna de Prompts é lida; as demais colunas do arquivo foram ignoradas.",
+      "noneImportable": "Nenhum Prompt pode ser importado. Seu plano {plan} monitora até {max} localizações de Prompts e {used} já estão em uso.",
+      "someImportable": "Somente {valid} de {total} Prompts serão importados. Seu plano {plan} monitora até {max} localizações de Prompts e {used} já estão em uso. {count, plural, one {O Prompt restante (a partir da linha {row}) não será importado} other {Os # Prompts restantes (a partir da linha {row}) não serão importados}}.",
+      "toAddMore": "Para adicionar mais Prompts, {starter, select, yes {faça upgrade do seu plano} other {entre em contato conosco}}.",
+      "head": {
+        "row": "Linha",
+        "prompt": "Prompt",
+        "status": "Status"
+      },
+      "status": {
+        "valid": "Válido",
+        "duplicate": "Duplicado",
+        "error": "Erro",
+        "over_limit": "Acima do limite do plano"
+      },
+      "reason": {
+        "empty": "Prompt vazio",
+        "tooLong": "Mais de {max} caracteres",
+        "duplicate": "Já monitorado ou repetido no arquivo"
+      },
+      "downloadNotImported": "Baixar Prompts não importados (.csv)",
+      "downloadErrors": "Baixar erros (.csv)",
+      "importButton": "Importar {count, plural, one {# Prompt} other {# Prompts}}",
+      "importedSome": "{imported} importado(s) · {notImported} não importado(s) devido ao limite do plano",
+      "importedAll": "{count, plural, one {# Prompt importado} other {# Prompts importados}}",
+      "analyzing": "Analisando agora. Defina tópicos e localizações com Editar em Todos os Prompts.",
+      "nextRun": "Eles serão incluídos na próxima execução de monitoramento.",
+      "failed": "Falha na importação. Tente novamente."
+    },
+    "workStatus": {
+      "todo": "A fazer",
+      "in_progress": "Em andamento",
+      "done": "Concluído",
+      "set": "Definir status",
+      "setLabel": "Definir status do trabalho",
+      "none": "Sem status"
+    },
+    "detail": {
+      "presets": {
+        "24h": "24h",
+        "7d": "7d",
+        "30d": "30d",
+        "90d": "90d"
+      },
+      "unknownModel": "Desconhecido",
+      "sentiment": {
+        "positive": "positivo",
+        "neutral": "neutro",
+        "negative": "negativo"
+      },
+      "active": "Ativo",
+      "paused": "Pausado",
+      "lastRun": "Última execução: {time}",
+      "loadFailed": "Falha ao carregar os detalhes do Prompt",
+      "errorTitle": "Não foi possível carregar este Prompt",
+      "retry": "Tentar novamente",
+      "notFoundTitle": "Prompt não encontrado",
+      "notFoundBody": "Este Prompt pode ter sido excluído ou não existe.",
+      "goBack": "Voltar",
+      "statusUpdateFailed": "Falha ao atualizar o status",
+      "opportunitiesLoadFailed": "Falha ao carregar as oportunidades de conteúdo",
+      "kpi": {
+        "visibility": "Visibilidade — mencionado em {mentioned} de {total, plural, one {# resposta} other {# respostas}}, citado em {cited}",
+        "mentions": "Menções",
+        "citations": "Citações"
+      },
+      "results": {
+        "title": "Resultados por plataforma",
+        "summary": "{count, plural, one {# resultado agrupado} other {# resultados agrupados}} por plataforma e modelo.",
+        "empty": "Ainda não há resultados de monitoramento para este Prompt.",
+        "emptyRange": "Nenhum resultado no período selecionado.",
+        "showAll": "Mostrar todos os dados"
+      },
+      "group": {
+        "runs": "{count, plural, one {# execução} other {# execuções}}",
+        "mentions": "Menções",
+        "citations": "Citações",
+        "runsHeading": "Execuções",
+        "mentionCount": "{count, plural, one {<n>#</n><l> menção</l>} other {<n>#</n><l> menções</l>}}",
+        "citationCount": "{count, plural, one {<n>#</n><l> citação</l>} other {<n>#</n><l> citações</l>}}",
+        "showResponse": "Mostrar resposta",
+        "hideResponse": "Ocultar resposta",
+        "openFullPage": "Abrir página completa",
+        "showingLatest": "Mostrando as {shown} mais recentes de {total, plural, one {# execução} other {# execuções}} desta plataforma."
+      },
+      "sources": {
+        "title": "Principais fontes",
+        "description": "Fontes que as plataformas de IA citam ao responder a este Prompt.",
+        "filterPlaceholder": "Filtrar por domínio, URL ou título...",
+        "domainsTab": "Domínios ({count})",
+        "urlsTab": "URLs ({count})",
+        "rank": "Classificação",
+        "domain": "Domínio",
+        "url": "URL",
+        "platforms": "Plataformas",
+        "usage": "Uso",
+        "citations": "Citações",
+        "openDomain": "Abrir {domain} em uma nova aba",
+        "openCitedPage": "Abrir a página citada em uma nova aba",
+        "openCitedPageTitle": "Abrir a página citada"
+      },
+      "notes": {
+        "title": "Notas",
+        "description": "Registre o trabalho por trás deste Prompt — o que foi publicado, planejado ou decidido.",
+        "placeholder": "ex.: Publicamos um post comparativo voltado para este Prompt…",
+        "add": "Adicionar nota",
+        "empty": "Ainda não há notas — adicione a primeira acima.",
+        "emptyReadOnly": "Ainda não há notas.",
+        "unknownAuthor": "Desconhecido",
+        "delete": "Excluir nota",
+        "addFailed": "Falha ao adicionar a nota",
+        "deleteFailed": "Falha ao excluir a nota"
+      },
+      "targets": {
+        "title": "URLs de destino",
+        "description": "Páginas que você quer que as respostas de IA citem para este Prompt. O status de citação é atualizado automaticamente conforme chegam novos resultados de monitoramento.",
+        "add": "Adicionar",
+        "empty": "Ainda não há URLs de destino — adicione as páginas que você quer que sejam citadas.",
+        "emptyReadOnly": "Ainda não há URLs de destino.",
+        "remove": "Remover URL de destino",
+        "addFailed": "Falha ao adicionar a URL",
+        "removeFailed": "Falha ao remover a URL",
+        "notCited": "Ainda não citada",
+        "cited": "Citada ×{count}",
+        "citedIn": "{count, plural, one {Citada em # resposta} other {Citada em # respostas}}",
+        "first": "primeira {date}",
+        "last": "última {date}",
+        "alreadyCited": "já era citada antes de virar destino"
+      },
+      "opportunities": {
+        "title": "Oportunidades de conteúdo",
+        "description": "Oportunidades identificadas para este Prompt que aguardam uma ação.",
+        "loadFailed": "Não foi possível carregar as oportunidades de conteúdo.",
+        "empty": "Nenhuma oportunidade aberta para este Prompt.",
+        "briefReady": "Brief pronto",
+        "viewAll": "Ver todas ({total})"
+      }
     }
   },
   "volumeEstimate": {
@@ -18767,6 +19069,7 @@
           "nextTag": "· próximo"
         },
         "unit": "<b>1 slot</b> = 1 prompt monitorado em 1 localização nessa plataforma, todos os dias.",
+        "unitInfo": "O que é um slot?",
         "columns": {
           "platform": "Plataforma",
           "included": "No seu plano",
@@ -18813,6 +19116,7 @@
       },
       "summary": "{prompts} localizações de Prompts · {brands} marcas",
       "review": "Revisar e pagar",
+      "reviewPrice": "Revisar e pagar {price}",
       "reviewing": "Verificando o preço…",
       "dialog": {
         "title": "Revise seus adicionais",
@@ -18864,6 +19168,7 @@
         "title": "Seus complementos",
         "onePayment": "Pagamento único",
         "plan": "Plano {plan}",
+        "planSub": "Já incluído na sua assinatura · sem alteração",
         "slots": "Monitoramento extra de {platform}",
         "slotsCount": "{slots} slots",
         "remove": "Remover {item}",
@@ -18873,7 +19178,8 @@
         "topUp": "{multiplier}x de uso de IA · até {date}",
         "total": "Total {interval, select, year {anual} other {mensal}} a partir da próxima renovação <b>{price}</b>",
         "undoAll": "Desfazer todas as alterações",
-        "dueToday": "A pagar hoje: os itens adicionados pelo restante deste período, exibidos em Revisar e pagar."
+        "dueToday": "A pagar hoje: os itens adicionados pelo restante deste período, exibidos em Revisar e pagar.",
+        "dueTodayAmount": "A pagar hoje: <b>{price}</b> pelos itens adicionados, pelo restante deste período."
       }
     },
     "cancelsOn": "A assinatura termina em {date}",

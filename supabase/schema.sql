@@ -69718,10 +69718,28 @@ comment on function public.org_platform_slot_usage(uuid) is
 notify pgrst, 'reload schema';
 
 -- ─────────────────────────────────────────────────────────────────────────
--- migrations/00565_ai_bot_netlify_log_drain.sql
+-- migrations/00566_enterprise_add_ons.sql
+-- ─────────────────────────────────────────────────────────────────────────
+-- 00566: Enterprise buys extra brands and AI usage top-ups itself
+--
+-- Extra brands and AI usage top-ups (00546) were sold to Growth only; an
+-- Enterprise workspace had to ask Ansvisor to raise its limits. Enterprise
+-- now buys them in Settings › Billing at the same prices, on the same Stripe
+-- prices (lookup keys addon_brand_month / _year, addon_ai_topup_5x / 10x /
+-- 20x): brands as items on its plan's subscription, read by the plan's limit
+-- as Growth's (plan-row.ts); top-ups granted as Growth's, whatever the plan.
+
+update public.add_on_products
+set plans = array_append(plans, 'enterprise')
+where kind in ('brand', 'ai_topup')
+  and plans is not null
+  and not ('enterprise' = any (plans));
+
+-- ─────────────────────────────────────────────────────────────────────────
+-- migrations/00567_ai_bot_netlify_log_drain.sql
 -- ─────────────────────────────────────────────────────────────────────────
 -- ============================================================================
--- 00565: Netlify log drain for AI bot traffic (#2167)
+-- 00567: Netlify log drain for AI bot traffic (#2167)
 -- ============================================================================
 -- A Netlify log drain (Enterprise plans) posts JSON or NDJSON request logs to
 -- /bots/ingest with the connection's Authorization bearer secret. Its records

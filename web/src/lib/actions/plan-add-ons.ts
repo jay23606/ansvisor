@@ -12,6 +12,7 @@ import { SLOT_PLATFORMS, slotPlatform, type SlotGroup } from '@/config/tracking-
 import { ORG_PLAN_COLUMNS, planFromOrgRow, boughtSlots } from '@/lib/guards/plan-row';
 import { slotDiscount } from '@/lib/billing/slot-discount';
 import { ensureSlotCoupon } from '@/lib/billing/slot-coupon';
+import { movedDiscount, type MovedDiscount } from '@/lib/billing/plan-coupon-move';
 import { countPlanBrands } from '@/lib/plan-brand-count';
 import {
   ADD_ON_PURCHASE_KEY,
@@ -50,7 +51,8 @@ import {
  *
  * A subscription-level discount (a coupon from the plan's checkout) would
  * discount the add-ons too: when the subscription will hold an add-on, the
- * discount moves onto the plan's item, so it keeps discounting the plan
+ * discount moves onto the plan's item as its coupon (a copy for the months
+ * left, when it runs for some months), so it keeps discounting the plan
  * alone.
  *
  * An AI usage top-up (+5x, +10x, +20x) can be in the same cart: one
@@ -79,7 +81,8 @@ import {
  *   - ending: the plan is set to end; "Keep my plan" first.
  *   - contact_sales: the tier is sold by sales (+5,000, +10,000).
  *   - unavailable: the tier or the brand isn't on sale here (no Stripe
- *     price that fits it, switched off, no Stripe key).
+ *     price that fits it, switched off, no Stripe key, or the plan's brands
+ *     are unlimited: an Enterprise contract's, 00548).
  *   - below_usage: the new limits are under what's in use; `inUse` and
  *     `limits` carry the numbers ("pause N prompt locations first").
  *     Tracking slots aren't refused below use: the newest prompt locations
@@ -193,6 +196,13 @@ const inputSchema = z.object({
 
 const refuse = (failure: AddOnChangeFailure, extra: Partial<AddOnChangeRefusal> = {}) =>
   ({ ok: false, failure, ...extra }) as AddOnChangeRefusal;
+
+/** A plan's own limits before add-ons: Enterprise's contract overrides merged. */
+function ownLimits(planId: string, overrides: unknown) {
+  const limits = getPlan(planId as Parameters<typeof getPlan>[0]).limits;
+  if (planId !== 'enterprise' || !overrides || typeof overrides !== 'object') return limits;
+  return { ...limits, ...(overrides as Partial<typeof limits>) };
+}
 
 /** What a preview or a change costs, without changing anything. */
 export async function previewAddOnChange(input: AddOnChangeInput): Promise<AddOnChangePreview> {
@@ -484,10 +494,11 @@ async function prepare(raw: AddOnChangeInput): Promise<Cart | AddOnChangeRefusal
     .maybeSingle();
   if (!org) return refuse('failed');
   const planId = (org.plan as string | null) ?? 'starter';
-  // Enterprise buys tracking slots here; its other add-ons are its contract's.
-  const slotsOnly = planId === 'enterprise';
-  if (planId !== 'growth' && !slotsOnly) return refuse('not_growth', { plan: planId });
-  if (slotsOnly && (input.trackingUnits > 0 || input.extraBrands > 0 || input.topUp)) {
+  // Enterprise buys tracking slots, extra brands and AI top-ups here (00564,
+  // 00566); the retired tracking tiers are Growth's.
+  const enterprise = planId === 'enterprise';
+  if (planId !== 'growth' && !enterprise) return refuse('not_growth', { plan: planId });
+  if (enterprise && input.trackingUnits > 0) {
     return refuse('not_growth', { plan: planId });
   }
   if (input.slots && Object.keys(input.slots).some((id) => !slotPlatform(id))) {
@@ -501,7 +512,11 @@ async function prepare(raw: AddOnChangeInput): Promise<Cart | AddOnChangeRefusal
 
   const stripe = await loadStripe();
   if (!stripe) return refuse('unavailable');
-  const subscription = await stripe.subscriptions.retrieve(org.stripe_subscription_id as string);
+  // Its discounts with their coupons: a discount moving onto the plan's item
+  // goes as a coupon (plan-coupon-move.ts).
+  const subscription = await stripe.subscriptions.retrieve(org.stripe_subscription_id as string, {
+    expand: ['discounts.source.coupon'],
+  });
   if (subscription.status === 'trialing') return refuse('trial');
   if (subscription.status !== 'active') return refuse('no_plan');
   if (subscription.cancel_at_period_end) return refuse('ending');
@@ -537,13 +552,22 @@ async function prepare(raw: AddOnChangeInput): Promise<Cart | AddOnChangeRefusal
       slots: keptSlots,
     };
   }
-  if (slotsOnly && (current.tracking || current.brands))
-    return refuse('not_growth', { plan: planId });
+  if (enterprise && current.tracking) return refuse('not_growth', { plan: planId });
   const slotUnits = input.slots ?? keptSlots;
-  const base = getPlan(planId).limits;
+  const base = ownLimits(planId, org.plan_overrides);
+  // Unlimited brands (an Enterprise contract, 00548): an extra brand adds
+  // nothing, so none is sold; removing ones bought before stays open.
+  const unlimitedBrands = base.maxBrands < 0;
+  if (
+    unlimitedBrands &&
+    input.extraBrands > 0 &&
+    input.extraBrands !== (current.brands?.quantity ?? 0)
+  ) {
+    return refuse('unavailable');
+  }
   const limits: AddOnLimits = {
-    prompts: base.maxPrompts + input.trackingUnits,
-    brands: base.maxBrands + input.extraBrands,
+    prompts: base.maxPrompts < 0 ? -1 : base.maxPrompts + input.trackingUnits,
+    brands: unlimitedBrands ? -1 : base.maxBrands + input.extraBrands,
   };
 
   // The tier: unchanged needs no sale; a new one must be sold here.
@@ -663,26 +687,29 @@ async function prepare(raw: AddOnChangeInput): Promise<Cart | AddOnChangeRefusal
   // Never below what's in use: a change that lowers a limit under it waits
   // until prompt locations are paused or brands removed.
   const before = addOnTotals(items, recurring);
-  const lowers = input.trackingUnits < before.prompts || input.extraBrands < before.brands;
-  if (changes.length && lowers) {
+  const fewerPrompts = input.trackingUnits < before.prompts && limits.prompts >= 0;
+  const fewerBrands = input.extraBrands < before.brands && !unlimitedBrands;
+  if (changes.length && (fewerPrompts || fewerBrands)) {
     const [usage, brandsInUse] = await Promise.all([
       getOrgLocationUsage(supabase, organizationId),
       countPlanBrands(supabase, organizationId),
     ]);
     const inUse = { prompts: usage.total, brands: brandsInUse };
     if (
-      (input.trackingUnits < before.prompts && inUse.prompts > limits.prompts) ||
-      (input.extraBrands < before.brands && inUse.brands > limits.brands)
+      (fewerPrompts && inUse.prompts > limits.prompts) ||
+      (fewerBrands && inUse.brands > limits.brands)
     ) {
       return refuse('below_usage', { inUse, limits });
     }
   }
 
   // The subscription's own discount moves onto the plan's item once an
-  // add-on is there, so the add-ons are charged in full.
-  const subscriptionDiscounts = (subscription.discounts ?? [])
-    .map((d) => idOf(d as string | { id: string }))
-    .filter((d): d is string => !!d);
+  // add-on is there, so the add-ons are charged in full. Stripe only takes a
+  // new discount on an item, so it goes as its coupon, for the months it
+  // had left (plan-coupon-move.ts).
+  const subscriptionDiscounts = (subscription.discounts ?? []).filter(
+    (d): d is Stripe.Discount => typeof d === 'object' && d != null,
+  );
   const withAddOns = !!trackingPriceId || input.extraBrands > 0 || slotTargets.size > 0;
   const discountsMove = changes.length > 0 && withAddOns && subscriptionDiscounts.length > 0;
   const planItemDiscounts = ((planItem as { discounts?: unknown[] }).discounts ?? [])
@@ -690,11 +717,13 @@ async function prepare(raw: AddOnChangeInput): Promise<Cart | AddOnChangeRefusal
     .filter((d): d is string => !!d);
   const sent: Record<string, unknown>[] = [...changes];
   if (discountsMove) {
+    const now = Math.floor(Date.now() / 1000);
+    const moved = (
+      await Promise.all(subscriptionDiscounts.map((d) => movedDiscount(stripe, d, now)))
+    ).filter((d): d is MovedDiscount => d != null);
     sent.push({
       id: planItem.id,
-      discounts: [...new Set([...planItemDiscounts, ...subscriptionDiscounts])].map((discount) => ({
-        discount,
-      })),
+      discounts: [...[...new Set(planItemDiscounts)].map((discount) => ({ discount })), ...moved],
     });
   }
 
@@ -706,7 +735,7 @@ async function prepare(raw: AddOnChangeInput): Promise<Cart | AddOnChangeRefusal
         r.kind === 'ai_topup' &&
         r.multiplier === input.topUp &&
         r.active &&
-        addOnForPlan(r, 'growth'),
+        addOnForPlan(r, planId),
     );
     if (!row || row.sale === 'contact_sales') return refuse('unavailable');
     const priceId = await resolveAddOnPrice(stripe, row);
@@ -776,6 +805,8 @@ export interface PlanAddOnsView {
   topUps: { multiplier: number; priceCents: number; briefs: number; opportunities: number }[];
   /** When the plan renews: a top-up lasts until then. */
   renewsOn: string | null;
+  /** How far an active plan lets this person buy, whatever the plan (Enterprise's state is 'enterprise'). */
+  buyState: PlanSlotsView['state'];
   /** The organization's plan, for the cart's first line. */
   planId: string;
   /** The plan's price on its period, in cents; null when it couldn't be read. */
@@ -901,8 +932,9 @@ export async function readPlanAddOns(): Promise<PlanAddOnsRead> {
       }
     }
 
+    // The add-ons the plan sells: Growth's all, Enterprise's brands (and slots below).
     const catalog = ((rows ?? []) as ViewRow[]).filter(
-      (r) => r.active && addOnForPlan(r, 'growth'),
+      (r) => r.active && addOnForPlan(r, planId === 'enterprise' ? 'enterprise' : 'growth'),
     );
     const slots = sellsSlots
       ? await slotsView(
@@ -938,7 +970,7 @@ export async function readPlanAddOns(): Promise<PlanAddOnsRead> {
         briefs: r.grant_briefs ?? 0,
         opportunities: r.grant_opportunities ?? 0,
       }));
-    const base = getPlan('growth').limits;
+    const base = ownLimits(planId === 'enterprise' ? 'enterprise' : 'growth', org.plan_overrides);
     const count = (v: unknown) => (typeof v === 'number' && v > 0 ? v : 0);
 
     return {
@@ -953,9 +985,11 @@ export async function readPlanAddOns(): Promise<PlanAddOnsRead> {
           extraBrands: count(org.add_on_brands),
         },
         tiers,
-        brandPriceCents: brand?.price_cents ?? null,
+        // Unlimited brands (00548): an extra one adds nothing, so none is offered.
+        brandPriceCents: base.maxBrands < 0 ? null : (brand?.price_cents ?? null),
         topUps,
         renewsOn: (org.subscription_ends_at as string | null) ?? null,
+        buyState: running,
         planId,
         planPriceCents,
         slots,

@@ -467,6 +467,12 @@
     }
   },
   "onboarding": {
+    "theme": {
+      "label": "Design",
+      "light": "Hell",
+      "dark": "Dunkel",
+      "hint": "Jederzeit änderbar über ☀︎/☾ neben dem Logo im Menü."
+    },
     "setup": {
       "brandTitle": "Richten Sie Ihre Marke ein",
       "brandIntro": "Erfahren Sie, wie KI-Plattformen über Sie sprechen. Fügen Sie Ihre erste Marke hinzu, um loszulegen.",
@@ -553,6 +559,30 @@
     }
   },
   "planOffer": {
+    "why": {
+      "label": "Warum Ansvisor",
+      "answers": {
+        "title": "Echte Antworten statt Schätzungen",
+        "body": "Sehen Sie die KI-Antworten hinter jeder Zahl und wie sie berechnet wird. Open Source."
+      },
+      "actions": {
+        "title": "Aufgaben, nicht nur Berichte",
+        "body": "Jeder Befund wird zur Aufgabe. Viele davon erledigen Agents für Sie."
+      },
+      "price": {
+        "title": "Klarer Preis",
+        "body": "Sie zahlen für die Prompts, die Sie auf jeder Plattform tracken. Mehr, wenn Sie es brauchen."
+      },
+      "results": {
+        "title": "Ergebnisse zum Vorzeigen",
+        "body": "Sichtbarkeit und KI-Besuche im Zeitverlauf, in Berichten zum Teilen."
+      }
+    },
+    "checkoutCanceled": {
+      "title": "Ihre Zahlung wurde nicht abgeschlossen, daher wurde nichts berechnet.",
+      "body": "Sie können es jederzeit erneut versuchen, wenn Sie bereit sind.",
+      "bodyDemo": "Sie können es jederzeit erneut versuchen, wenn Sie bereit sind, oder zuerst die Demo-Marke ausprobieren, ganz ohne Karte."
+    },
     "buyNow": "Jetzt kaufen",
     "startTrial": "{days}-tägige kostenlose Testversion starten",
     "fullPlan": "Vollständiger Tarif ab dem ersten Tag",
@@ -943,6 +973,7 @@
         "impact": "{level} Auswirkung",
         "effort": "ca. {effort}",
         "steps": "{done} von {total} Schritten erledigt",
+        "past": "Bisher: {improved} von {results} ähnlichen Aktionen verbesserten die Ergebnisse",
         "firstStep": "Erster Schritt: {step}",
         "start": "Starten",
         "continue": "Fortsetzen",
@@ -1236,6 +1267,9 @@
         "goal_reached": "Ziel erreicht"
       },
       "pointsChange": "{value} Pkt.",
+      "notes": {
+        "no_revenue": "Google Analytics meldet keinen Umsatz; dafür ist E-Commerce-Tracking nötig"
+      },
       "score": "{value}/100",
       "vsGoalAria": "{progress} % des Ziels",
       "editKpis": "KPIs bearbeiten",
@@ -1311,6 +1345,7 @@
       "targetAria": "Zielwert für {name}",
       "invalidTarget": "Zielwerte müssen positiv sein; Prozent- und Score-Ziele dürfen 100 nicht überschreiten.",
       "scoreSuffix": "/100",
+      "needsGa": "Erfordert Google Analytics",
       "callout": {
         "title": "Dieses KPI-Framework steuert Ihr Aktionszentrum.",
         "description": "Aktionen und Empfehlungen werden basierend auf Ihren KPI-Zielen priorisiert."
@@ -1341,6 +1376,14 @@
       "ai_referral_traffic": {
         "name": "KI-Referral-Traffic",
         "description": "Besuche über KI-Plattformen"
+      },
+      "ai_conversions": {
+        "name": "KI-Conversions",
+        "description": "Schlüsselereignisse aus KI-vermittelten Sitzungen (Google Analytics)"
+      },
+      "ai_revenue": {
+        "name": "KI-Umsatz",
+        "description": "Umsatz aus KI-vermittelten Sitzungen (Google Analytics)"
       },
       "positive_sentiment": {
         "name": "Positives Sentiment",
@@ -2122,6 +2165,8 @@
       "noOpen": "Keine offenen Aktionen. Abgeschlossene und verworfene finden Sie unter „Alle Status“.",
       "showAllStatuses": "Alle Status anzeigen",
       "summary": {
+        "refreshed": "{count} diese Woche aktualisiert",
+        "refreshedHint": "In den letzten {days} Tagen durch eine neue Aktion auf Basis aktueller Daten ersetzt, da seit 30 Tagen niemand daran gearbeitet hatte.",
         "open": "{count} offen",
         "closed": "{count} diese Woche abgeschlossen",
         "closedHint": "In den letzten {days} Tagen abgeschlossen oder verworfen. Klicken, um sie aufzulisten.",
@@ -2150,9 +2195,10 @@
         },
         "notScored": "Noch nicht bewertet",
         "why": "Warum diese Priorität?",
+        "pastTag": "{improved} von {results} wirkten",
         "lowConfidence": {
-          "tip": "Basierend auf {why}. Die Konfidenz ist nur ein Teil der Bewertung, daher können Wirkung und Nachfrage sie trotzdem weit oben einstufen. Prüfen Sie sie, bevor Sie handeln.",
-          "sentTip": "Bewertet anhand dessen, womit sie gesendet wurde, nicht anhand erkannter Befunde. Prüfen Sie sie, bevor Sie handeln."
+          "tip": "Basierend auf {why}. Google Analytics, Search Console oder ein Site-Audit können eine zweite Art von Beleg hinzufügen. Das ist nur ein Teil der Bewertung; Wirkung und Nachfrage bestimmen die Reihenfolge mit.",
+          "sentTip": "Bewertet anhand dessen, womit sie gesendet wurde, nicht anhand erkannter Befunde."
         },
         "reason": {
           "change": {
@@ -2208,10 +2254,11 @@
           "sources": "bestätigt durch {count} Quellen",
           "confidence": {
             "line": "{level} — {why}.",
-            "low": "Geringe Konfidenz",
-            "medium": "Mittlere Konfidenz",
-            "high": "Hohe Konfidenz",
+            "low": "Eine Quelle",
+            "medium": "Bestätigt",
+            "high": "Gut bestätigt",
             "found": "{kinds, plural, one {eine Art von Befund} other {# Arten von Befunden}}{sources, plural, =0 {} one { aus einer Quelle} other { aus # Quellen}}",
+            "held": "{found}{nights, plural, =0 {} one {, an # Nacht gesehen} other {, an # Nächten in Folge gesehen}}{prompts, plural, =0 {} one { bei # Prompt} other { über # Prompts hinweg}}",
             "sent": "bewertet anhand der übermittelten Daten, nicht anhand erkannter Befunde"
           },
           "sentence": {
@@ -10691,6 +10738,7 @@
       "sectionLabel": "Wichtigste Kennzahlen",
       "noData": "Keine Daten",
       "viewBreakdown": "{metric}: Aufschlüsselung anzeigen",
+      "howCalculated": "{metric}: Wie wird das berechnet?",
       "openPrompts": "Getrackte Prompts: Prompts öffnen",
       "openCitations": "Zitierungen: Zitierungen öffnen",
       "openMentions": "Erwähnungen: Erwähnungen öffnen",
@@ -15912,6 +15960,10 @@
     "loadError": "Ihre Prompts konnten nicht geladen werden.",
     "visibilityDegraded": "Werte zur Sichtbarkeit sind vorübergehend nicht verfügbar – Prompts werden ohne diese angezeigt.",
     "positions": {
+      "slots": {
+        "note": "Noch nicht in Ihrem Tarif enthalten · Fügen Sie Tracking-slots hinzu, um {platform}-Ergebnisse und -Positionen zu verfolgen.",
+        "add": "Slots hinzufügen"
+      },
       "answers": "{count, plural, one {# Antwort} other {# Antworten}}",
       "answersInPeriod": "{count, plural, one {# Antwort} other {# Antworten}} in diesem Zeitraum",
       "mentionedIn": "In {mentioned} von {answers, plural, one {# Antwort} other {# Antworten}} · {mentions, plural, one {# Erwähnung} other {# Erwähnungen}}",
@@ -16591,6 +16643,256 @@
       "noRoomToResume": "Nicht genug Platz zum Fortsetzen",
       "bulkFailed": "{action, select, resume {Die Prompts konnten nicht fortgesetzt werden.} other {Die Prompts konnten nicht pausiert werden.}}",
       "bulkPartial": "{action, select, resume {{failed} von {total} konnten nicht fortgesetzt werden.} other {{failed} von {total} konnten nicht pausiert werden.}}"
+    },
+    "positionsSheet": {
+      "tracked": "Getrackter Prompt",
+      "paused": "Pausiert",
+      "improvingTitle": "Aktion und ihr Ergebnis öffnen",
+      "improving": "Wird verbessert · {code}",
+      "window": "{preset, select, custom {Benutzerdefinierter Zeitraum} other {Letzte {preset}}}",
+      "lastRun": "Letzter Lauf: {at}",
+      "runs": "{count, plural, one {# Lauf} other {# Läufe}}",
+      "period": "Zeitraum",
+      "discardNote": "Wenn Sie den Zeitraum ändern, werden Ihre nicht gesendeten Verbesserungsänderungen verworfen.",
+      "keepEditing": "Weiter bearbeiten",
+      "discard": "Verwerfen & ändern",
+      "seeAnswers": "KI-Antworten ansehen",
+      "back": "Zurück zu Prompts",
+      "loading": "Positionen werden geladen",
+      "loadError": "Positionen konnten nicht geladen werden: {message}",
+      "retry": "Erneut versuchen",
+      "noLongerAvailable": "Dieser Prompt ist nicht mehr verfügbar.",
+      "loadFailed": "Positionen konnten nicht geladen werden.",
+      "sentimentUnavailable": "Stimmung nicht verfügbar",
+      "sentiment": {
+        "positive": "positiv",
+        "neutral": "neutral",
+        "negative": "negativ"
+      },
+      "notMentioned": "Nicht erwähnt",
+      "mentioned": "Erwähnt",
+      "positionUnavailable": "Position nicht verfügbar",
+      "notCited": "Nicht zitiert",
+      "cited": "Zitiert",
+      "locked": {
+        "growth": "Verfügbar im Growth-Tarif",
+        "notEnabled": "Für diesen Workspace nicht aktiviert",
+        "enterprise": "Verfügbar im Enterprise-Tarif",
+        "line": "{note} · {growth, select, yes {Upgraden Sie} other {Kontaktieren Sie uns}}, um {platform}-Ergebnisse und -Positionen zu tracken."
+      },
+      "upgrade": "Upgrade",
+      "contactUs": "Kontakt aufnehmen",
+      "improve": "Verbessern",
+      "stat": {
+        "platformsAnswered": "Antwortende Plattformen",
+        "inLatestRun": "in ihrem letzten Lauf",
+        "mentionedOn": "Erwähnt auf",
+        "citedOn": "Zitiert auf",
+        "platforms": "Plattformen",
+        "avgPosition": "Ø Position",
+        "whenMentioned": "wenn erwähnt",
+        "whenMentionedSources": "wenn erwähnt · {avg} in Quellen",
+        "runs": "Durchläufe",
+        "trackedOf": "{tracked} von {count, plural, one {# Tag} other {# Tagen}} erfasst",
+        "mentioned": "Erwähnt",
+        "cited": "Zitiert",
+        "ofDays": "{n} / {count, plural, one {# Tag} other {# Tage}}",
+        "notMentionedCount": "{count} nicht erwähnt",
+        "notCitedCount": "{count} nicht zitiert"
+      },
+      "tabs": {
+        "platforms": "Plattformergebnisse",
+        "history": "Tagesverlauf ({count})"
+      },
+      "runAt": "Durchlauf um {at}",
+      "noRuns": "Keine abgeschlossenen Tracking-Durchläufe in diesem Zeitraum",
+      "noRunsDot": "Keine abgeschlossenen Tracking-Durchläufe in diesem Zeitraum.",
+      "mention": "Erwähnung",
+      "citation": "Zitierung",
+      "detectedEarlier": "Früher in diesem Zeitraum erkannt",
+      "untracked": "{count, plural, one {# Tag} other {# Tage}} ohne abgeschlossenen Durchlauf. Nicht erfasste Tage zählen nicht als nicht erwähnt oder nicht zitiert.",
+      "blocksNote": "Jeder Block entspricht einem Tag im gewählten Zeitraum in Ihrer Zeitzone. Fahren Sie über einen Block, um die Positionen dieses Tages zu sehen; öffnen Sie eine Plattform für alle Durchläufe.",
+      "legend": {
+        "Early": "Früh erwähnt",
+        "Mid": "Mitte",
+        "Late": "Spät",
+        "cited": "Nur zitiert",
+        "none": "Kein Ergebnis",
+        "untracked": "Nicht erfasst"
+      },
+      "tone": {
+        "Early": "Früh",
+        "Mid": "Mitte",
+        "Late": "Spät"
+      },
+      "tip": {
+        "share": " in {n} von {runs} Durchläufen",
+        "rankOf": "#{rank} von {total}"
+      },
+      "heatmapLabel": "{platform}: erwähnt an {mentioned} und zitiert an {cited} von {count, plural, one {# erfassten Tag} other {# erfassten Tagen}}",
+      "trio": {
+        "best": "Beste",
+        "worst": "Schlechteste",
+        "avg": "Ø",
+        "none": "Keine Erwähnungsposition",
+        "title": "Position bei Erwähnung"
+      },
+      "runsNote": "{runs} Durchläufe · erwähnt in {mentioned} · zitiert in {cited}",
+      "noData": "Keine Tracking-Daten für diesen Zeitraum",
+      "toggle": "Tägliche {platform}-Ergebnisse {open, select, yes {ausblenden} other {anzeigen}}",
+      "runsOnDays": "{runs, plural, one {# Durchlauf} other {# Durchläufe}} an {days, plural, one {# Tag} other {# Tagen}}",
+      "sentimentLine": " · Stimmung in Antworten mit Erwähnung: {positive} positiv, {neutral} neutral, {negative} negativ",
+      "sentimentUnavailableTail": ", {count} nicht verfügbar",
+      "moreDays": "{count} weitere Tage anzeigen",
+      "platformsAnswered": "{count, plural, one {# Plattform} other {# Plattformen}} haben geantwortet"
+    },
+    "bulkImport": {
+      "intro": "Tragen Sie Ihre Prompts in <b>eine Spalte</b> ein, ein Prompt pro Zeile, untereinander. Eine erste Zeile mit dem Titel <b>Prompt</b> wird als Kopfzeile gelesen (optional). Importierte Prompts verwenden die unter „Einzeln“ ausgewählten Plattformen und den Standort der Marke; legen Sie Thema und Standort anschließend jeweils über „Bearbeiten“ in „Alle Prompts“ fest.",
+      "drop": "Eine .xlsx- oder .csv-Datei hierher ziehen oder klicken, um sie auszuwählen",
+      "perRow": "Ein Prompt pro Zeile · bis zu {max} Zeilen",
+      "template": "Vorlage herunterladen",
+      "chooseFile": "Wählen Sie eine .xlsx- oder .csv-Datei aus.",
+      "unreadable": "Diese Datei konnte nicht gelesen werden. Prüfen Sie, ob es sich um eine gültige .xlsx- oder .csv-Datei handelt.",
+      "counts": "<b>{valid} gültig</b> · {duplicates, plural, one {# Duplikat} other {# Duplikate}} · {errors, plural, one {# Fehler} other {# Fehler}}",
+      "inUse": "· {used} / {max} Prompt-Standorte belegt",
+      "truncated": "Nur die ersten {max} Zeilen wurden gelesen; {more} weitere wurden ausgelassen. Teilen Sie größere Dateien auf.",
+      "extraColumns": "Nur die Prompt-Spalte wird gelesen; die übrigen Spalten der Datei wurden ignoriert.",
+      "noneImportable": "Es können keine Prompts importiert werden. Ihr {plan}-Tarif umfasst bis zu {max} Prompt-Standorte, davon sind {used} bereits belegt.",
+      "someImportable": "Nur {valid} von {total} Prompts werden importiert. Ihr {plan}-Tarif umfasst bis zu {max} Prompt-Standorte, davon sind {used} bereits belegt. Die übrigen {count, plural, one {# Prompt} other {# Prompts}} (ab Zeile {row}) werden nicht importiert.",
+      "toAddMore": "Um weitere Prompts hinzuzufügen, {starter, select, yes {upgraden Sie Ihren Tarif} other {kontaktieren Sie uns}}.",
+      "head": {
+        "row": "Zeile",
+        "prompt": "Prompt",
+        "status": "Status"
+      },
+      "status": {
+        "valid": "Gültig",
+        "duplicate": "Duplikat",
+        "error": "Fehler",
+        "over_limit": "Tariflimit überschritten"
+      },
+      "reason": {
+        "empty": "Leerer Prompt",
+        "tooLong": "Länger als {max} Zeichen",
+        "duplicate": "Bereits erfasst oder in der Datei wiederholt"
+      },
+      "downloadNotImported": "Nicht importierte Prompts herunterladen (.csv)",
+      "downloadErrors": "Fehler herunterladen (.csv)",
+      "importButton": "{count, plural, one {# Prompt} other {# Prompts}} importieren",
+      "importedSome": "{imported} importiert · {notImported} wegen Tariflimit nicht importiert",
+      "importedAll": "{count, plural, one {# Prompt importiert} other {# Prompts importiert}}",
+      "analyzing": "Die Analyse läuft. Legen Sie Themen und Standorte über „Bearbeiten“ in „Alle Prompts“ fest.",
+      "nextRun": "Sie werden beim nächsten Tracking-Lauf berücksichtigt.",
+      "failed": "Import fehlgeschlagen. Bitte versuchen Sie es erneut."
+    },
+    "workStatus": {
+      "todo": "Zu erledigen",
+      "in_progress": "In Bearbeitung",
+      "done": "Erledigt",
+      "set": "Status festlegen",
+      "setLabel": "Arbeitsstatus festlegen",
+      "none": "Kein Status"
+    },
+    "detail": {
+      "presets": {
+        "24h": "24 Std.",
+        "7d": "7 T.",
+        "30d": "30 T.",
+        "90d": "90 T."
+      },
+      "unknownModel": "Unbekannt",
+      "sentiment": {
+        "positive": "positiv",
+        "neutral": "neutral",
+        "negative": "negativ"
+      },
+      "active": "Aktiv",
+      "paused": "Pausiert",
+      "lastRun": "Letzte Ausführung: {time}",
+      "loadFailed": "Prompt-Details konnten nicht geladen werden",
+      "errorTitle": "Dieser Prompt konnte nicht geladen werden",
+      "retry": "Erneut versuchen",
+      "notFoundTitle": "Prompt nicht gefunden",
+      "notFoundBody": "Dieser Prompt wurde möglicherweise gelöscht oder existiert nicht.",
+      "goBack": "Zurück",
+      "statusUpdateFailed": "Status konnte nicht aktualisiert werden",
+      "opportunitiesLoadFailed": "Content-Potenziale konnten nicht geladen werden",
+      "kpi": {
+        "visibility": "Sichtbarkeit — erwähnt in {mentioned} von {total, plural, one {# Antwort} other {# Antworten}}, zitiert in {cited}",
+        "mentions": "Erwähnungen",
+        "citations": "Zitierungen"
+      },
+      "results": {
+        "title": "Plattform-Ergebnisse",
+        "summary": "{count, plural, one {# Ergebnis} other {# Ergebnisse}}, gruppiert nach Plattform und Modell.",
+        "empty": "Noch keine Tracking-Ergebnisse für diesen Prompt.",
+        "emptyRange": "Keine Ergebnisse im gewählten Zeitraum.",
+        "showAll": "Alle Daten anzeigen"
+      },
+      "group": {
+        "runs": "{count, plural, one {# Ausführung} other {# Ausführungen}}",
+        "mentions": "Erwähnungen",
+        "citations": "Zitierungen",
+        "runsHeading": "Ausführungen",
+        "mentionCount": "{count, plural, one {<n>#</n><l> Erwähnung</l>} other {<n>#</n><l> Erwähnungen</l>}}",
+        "citationCount": "{count, plural, one {<n>#</n><l> Zitierung</l>} other {<n>#</n><l> Zitierungen</l>}}",
+        "showResponse": "Antwort anzeigen",
+        "hideResponse": "Antwort ausblenden",
+        "openFullPage": "Ganze Seite öffnen",
+        "showingLatest": "Die neuesten {shown} von {total, plural, one {# Ausführung} other {# Ausführungen}} für diese Plattform."
+      },
+      "sources": {
+        "title": "Top-Quellen",
+        "description": "Quellen, die KI-Plattformen bei der Antwort auf diesen Prompt zitieren.",
+        "filterPlaceholder": "Nach Domain, URL oder Titel filtern...",
+        "domainsTab": "Domains ({count})",
+        "urlsTab": "URLs ({count})",
+        "rank": "Rang",
+        "domain": "Domain",
+        "url": "URL",
+        "platforms": "Plattformen",
+        "usage": "Nutzung",
+        "citations": "Zitierungen",
+        "openDomain": "{domain} in einem neuen Tab öffnen",
+        "openCitedPage": "Zitierte Seite in einem neuen Tab öffnen",
+        "openCitedPageTitle": "Zitierte Seite öffnen"
+      },
+      "notes": {
+        "title": "Notizen",
+        "description": "Halten Sie die Arbeit hinter diesem Prompt fest — was veröffentlicht, geplant oder entschieden wurde.",
+        "placeholder": "z. B. Einen Vergleichs-Blogartikel zu diesem Prompt veröffentlicht…",
+        "add": "Notiz hinzufügen",
+        "empty": "Noch keine Notizen — fügen Sie oben die erste hinzu.",
+        "emptyReadOnly": "Noch keine Notizen.",
+        "unknownAuthor": "Unbekannt",
+        "delete": "Notiz löschen",
+        "addFailed": "Notiz konnte nicht hinzugefügt werden",
+        "deleteFailed": "Notiz konnte nicht gelöscht werden"
+      },
+      "targets": {
+        "title": "Ziel-URLs",
+        "description": "Seiten, die KI-Antworten für diesen Prompt zitieren sollen. Der Zitierstatus wird automatisch aktualisiert, sobald neue Tracking-Ergebnisse eintreffen.",
+        "add": "Hinzufügen",
+        "empty": "Noch keine Ziel-URLs — fügen Sie die Seiten hinzu, die zitiert werden sollen.",
+        "emptyReadOnly": "Noch keine Ziel-URLs.",
+        "remove": "Ziel-URL entfernen",
+        "addFailed": "URL konnte nicht hinzugefügt werden",
+        "removeFailed": "URL konnte nicht entfernt werden",
+        "notCited": "Noch nicht zitiert",
+        "cited": "Zitiert ×{count}",
+        "citedIn": "{count, plural, one {Zitiert in # Antwort} other {Zitiert in # Antworten}}",
+        "first": "zuerst {date}",
+        "last": "zuletzt {date}",
+        "alreadyCited": "wurde schon vor dem Targeting zitiert"
+      },
+      "opportunities": {
+        "title": "Content-Potenziale",
+        "description": "Für diesen Prompt erkannte Potenziale, die auf eine Aktion warten.",
+        "loadFailed": "Content-Potenziale konnten nicht geladen werden.",
+        "empty": "Keine offenen Potenziale für diesen Prompt.",
+        "briefReady": "Brief fertig",
+        "viewAll": "Alle {total} anzeigen"
+      }
     }
   },
   "volumeEstimate": {
@@ -18769,6 +19071,7 @@
           "nextTag": "· nächste"
         },
         "unit": "<b>1 slot</b> = 1 Prompt, der täglich an 1 Standort auf dieser Plattform getrackt wird.",
+        "unitInfo": "Was ist ein Slot?",
         "columns": {
           "platform": "Plattform",
           "included": "In Ihrem Tarif",
@@ -18815,6 +19118,7 @@
       },
       "summary": "{prompts} Prompt-Standorte · {brands} Marken",
       "review": "Prüfen und bezahlen",
+      "reviewPrice": "Prüfen und zahlen {price}",
       "reviewing": "Preis wird geprüft…",
       "dialog": {
         "title": "Ihre Zusatzoptionen prüfen",
@@ -18866,6 +19170,7 @@
         "title": "Ihre Add-ons",
         "onePayment": "Einmalzahlung",
         "plan": "Tarif {plan}",
+        "planSub": "Bereits in Ihrem Abo · keine Änderung",
         "slots": "Zusätzliches Tracking für {platform}",
         "slotsCount": "{slots} slots",
         "remove": "{item} entfernen",
@@ -18875,7 +19180,8 @@
         "topUp": "{multiplier}x KI-Nutzung · bis {date}",
         "total": "{interval, select, year {Jährliche} other {Monatliche}} Summe ab der nächsten Verlängerung: <b>{price}</b>",
         "undoAll": "Alle Änderungen rückgängig machen",
-        "dueToday": "Heute fällig: die hinzugefügten Positionen für den Rest dieses Zeitraums, angezeigt unter „Prüfen und bezahlen“."
+        "dueToday": "Heute fällig: die hinzugefügten Positionen für den Rest dieses Zeitraums, angezeigt unter „Prüfen und bezahlen“.",
+        "dueTodayAmount": "Heute fällig: <b>{price}</b> für die hinzugefügten Posten, für den Rest dieses Zeitraums."
       }
     },
     "cancelsOn": "Abonnement endet am {date}",

@@ -467,6 +467,12 @@
     }
   },
   "onboarding": {
+    "theme": {
+      "label": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "hint": "Change it any time with ☀︎/☾ next to the logo in the menu."
+    },
     "setup": {
       "brandTitle": "Set up your brand",
       "brandIntro": "See how AI platforms talk about you. Add your first brand to get started.",
@@ -553,6 +559,30 @@
     }
   },
   "planOffer": {
+    "why": {
+      "label": "Why Ansvisor",
+      "answers": {
+        "title": "Real answers, not guesses",
+        "body": "See the AI answers behind each number, and how it's calculated. Open source."
+      },
+      "actions": {
+        "title": "Actions, not only reports",
+        "body": "Each finding becomes a task. Agents can do many of them for you."
+      },
+      "price": {
+        "title": "Clear price",
+        "body": "Pay for the prompts you track on each platform. Add more when you need it."
+      },
+      "results": {
+        "title": "Results you can show",
+        "body": "Visibility and AI visits over time, in reports you can share."
+      }
+    },
+    "checkoutCanceled": {
+      "title": "Your payment wasn’t completed, so nothing was charged.",
+      "body": "You can try again whenever you’re ready.",
+      "bodyDemo": "You can try again whenever you’re ready, or explore the demo brand first, no card needed."
+    },
     "buyNow": "Buy now",
     "startTrial": "Start {days}-day free trial",
     "fullPlan": "Full plan from day one",
@@ -943,6 +973,7 @@
         "impact": "{level} impact",
         "effort": "about {effort}",
         "steps": "{done} of {total} steps done",
+        "past": "Before: {improved} of {results} similar actions improved results",
         "firstStep": "First step: {step}",
         "start": "Start",
         "continue": "Continue",
@@ -1236,6 +1267,9 @@
         "goal_reached": "Goal Reached"
       },
       "pointsChange": "{value} pts",
+      "notes": {
+        "no_revenue": "No revenue reported by Google Analytics; it needs e-commerce tracking"
+      },
       "score": "{value}/100",
       "vsGoalAria": "{progress}% of goal",
       "editKpis": "Edit KPIs",
@@ -1311,6 +1345,7 @@
       "targetAria": "Target for {name}",
       "invalidTarget": "Targets must be positive; percent and score targets can't exceed 100.",
       "scoreSuffix": "/100",
+      "needsGa": "Needs Google Analytics",
       "callout": {
         "title": "This KPI framework will drive your Action Center.",
         "description": "Actions and recommendations are prioritized based on your KPI goals."
@@ -1341,6 +1376,14 @@
       "ai_referral_traffic": {
         "name": "AI Referral Traffic",
         "description": "Visits arriving from AI platforms"
+      },
+      "ai_conversions": {
+        "name": "AI Conversions",
+        "description": "Key events from AI-referred sessions (Google Analytics)"
+      },
+      "ai_revenue": {
+        "name": "AI Revenue",
+        "description": "Revenue from AI-referred sessions (Google Analytics)"
       },
       "positive_sentiment": {
         "name": "Positive Sentiment",
@@ -2122,6 +2165,8 @@
       "noOpen": "No open actions. Completed and dismissed ones are under every status.",
       "showAllStatuses": "Show every status",
       "summary": {
+        "refreshed": "{count} refreshed this week",
+        "refreshedHint": "Replaced in the last {days} days by a new action built from fresh data, because nobody had worked on them for 30 days.",
         "open": "{count} open",
         "closed": "{count} closed this week",
         "closedHint": "Completed or dismissed in the last {days} days. Click to list them.",
@@ -2150,9 +2195,10 @@
         },
         "notScored": "Not scored yet",
         "why": "Why this priority?",
+        "pastTag": "{improved} of {results} worked",
         "lowConfidence": {
-          "tip": "Based on {why}. Confidence is only one part of the score, so impact and demand can still rank it high. Check it before acting.",
-          "sentTip": "Rated from what it was sent with, not from detected findings. Check it before acting."
+          "tip": "Based on {why}. Google Analytics, Search Console or a site audit can add a second kind of evidence. This is one part of the score; impact and demand still rank it.",
+          "sentTip": "Rated from what it was sent with, not from detected findings."
         },
         "reason": {
           "change": {
@@ -2208,10 +2254,11 @@
           "sources": "confirmed by {count} sources",
           "confidence": {
             "line": "{level} — {why}.",
-            "low": "Low confidence",
-            "medium": "Medium confidence",
-            "high": "High confidence",
+            "low": "Single source",
+            "medium": "Confirmed",
+            "high": "Well confirmed",
             "found": "{kinds, plural, one {one kind of finding} other {# kinds of finding}}{sources, plural, =0 {} one { from one source} other { from # sources}}",
+            "held": "{found}{nights, plural, =0 {} one {, seen on # night} other {, seen on # nights in a row}}{prompts, plural, =0 {} one { on # prompt} other { across # prompts}}",
             "sent": "rated from what it was sent with, not from detected findings"
           },
           "sentence": {
@@ -10322,6 +10369,7 @@
       "sectionLabel": "Key metrics",
       "noData": "No data",
       "viewBreakdown": "{metric}: view breakdown",
+      "howCalculated": "{metric}: how is this calculated?",
       "openPrompts": "Tracked prompts: open Prompts",
       "openCitations": "Citations: open Citations",
       "openMentions": "Mentions: open Mentions",
@@ -15523,6 +15571,10 @@
     "loadError": "Couldn't load your prompts.",
     "visibilityDegraded": "Visibility figures are temporarily unavailable — showing prompts without them.",
     "positions": {
+      "slots": {
+        "note": "Not in your plan yet · Add tracking slots to track {platform} results and positions.",
+        "add": "Add slots"
+      },
       "answers": "{count, plural, one {# answer} other {# answers}}",
       "answersInPeriod": "{count, plural, one {# answer} other {# answers}} in this period",
       "mentionedIn": "In {mentioned} of {answers, plural, one {# answer} other {# answers}} · {mentions, plural, one {# mention} other {# mentions}}",
@@ -16202,6 +16254,256 @@
       "noRoomToResume": "Not enough room to resume",
       "bulkFailed": "{action, select, resume {Failed to resume the prompts.} other {Failed to pause the prompts.}}",
       "bulkPartial": "{action, select, resume {{failed} of {total} couldn't be resumed.} other {{failed} of {total} couldn't be paused.}}"
+    },
+    "positionsSheet": {
+      "tracked": "Tracked prompt",
+      "paused": "Paused",
+      "improvingTitle": "Open the action and its Outcome",
+      "improving": "Improving · {code}",
+      "window": "{preset, select, custom {Custom range} other {Last {preset}}}",
+      "lastRun": "Last run: {at}",
+      "runs": "{count, plural, one {# run} other {# runs}}",
+      "period": "Period",
+      "discardNote": "Changing the period discards your unsent Improve edits.",
+      "keepEditing": "Keep editing",
+      "discard": "Discard & change",
+      "seeAnswers": "See AI answers",
+      "back": "Back to prompts",
+      "loading": "Loading positions",
+      "loadError": "Couldn't load positions: {message}",
+      "retry": "Retry",
+      "noLongerAvailable": "This prompt is no longer available.",
+      "loadFailed": "Failed to load positions.",
+      "sentimentUnavailable": "Sentiment unavailable",
+      "sentiment": {
+        "positive": "positive",
+        "neutral": "neutral",
+        "negative": "negative"
+      },
+      "notMentioned": "Not mentioned",
+      "mentioned": "Mentioned",
+      "positionUnavailable": "Position unavailable",
+      "notCited": "Not cited",
+      "cited": "Cited",
+      "locked": {
+        "growth": "Available on Growth",
+        "notEnabled": "Not enabled for this workspace",
+        "enterprise": "Available on Enterprise",
+        "line": "{note} · {growth, select, yes {Upgrade} other {Contact us}} to track {platform} results and positions."
+      },
+      "upgrade": "Upgrade",
+      "contactUs": "Contact us",
+      "improve": "Improve",
+      "stat": {
+        "platformsAnswered": "Platforms answered",
+        "inLatestRun": "in their latest run",
+        "mentionedOn": "Mentioned on",
+        "citedOn": "Cited on",
+        "platforms": "platforms",
+        "avgPosition": "Avg. position",
+        "whenMentioned": "when mentioned",
+        "whenMentionedSources": "when mentioned · {avg} in sources",
+        "runs": "Runs",
+        "trackedOf": "{tracked} of {count, plural, one {# day} other {# days}} tracked",
+        "mentioned": "Mentioned",
+        "cited": "Cited",
+        "ofDays": "{n} / {count, plural, one {# day} other {# days}}",
+        "notMentionedCount": "{count} not mentioned",
+        "notCitedCount": "{count} not cited"
+      },
+      "tabs": {
+        "platforms": "Platform results",
+        "history": "Daily history ({count})"
+      },
+      "runAt": "Run at {at}",
+      "noRuns": "No completed tracking runs in this period",
+      "noRunsDot": "No completed tracking runs in this period.",
+      "mention": "Mention",
+      "citation": "Citation",
+      "detectedEarlier": "Detected earlier in this period",
+      "untracked": "{count, plural, one {# day} other {# days}} without a completed run. Untracked days don't count as not mentioned or not cited.",
+      "blocksNote": "Each block is one day in the selected range, in your time zone. Hover a block for that day's positions; open a platform for every run.",
+      "legend": {
+        "Early": "Mentioned early",
+        "Mid": "Mid",
+        "Late": "Late",
+        "cited": "Cited only",
+        "none": "No result",
+        "untracked": "Not tracked"
+      },
+      "tone": {
+        "Early": "Early",
+        "Mid": "Mid",
+        "Late": "Late"
+      },
+      "tip": {
+        "share": " in {n} of {runs} runs",
+        "rankOf": "#{rank} of {total}"
+      },
+      "heatmapLabel": "{platform}: mentioned on {mentioned} and cited on {cited} of {count, plural, one {# tracked day} other {# tracked days}}",
+      "trio": {
+        "best": "Best",
+        "worst": "Worst",
+        "avg": "Avg.",
+        "none": "No mention position",
+        "title": "Position when mentioned"
+      },
+      "runsNote": "{runs} runs · mentioned in {mentioned} · cited in {cited}",
+      "noData": "No tracking data for this period",
+      "toggle": "{open, select, yes {Hide} other {Show}} daily {platform} results",
+      "runsOnDays": "{runs, plural, one {# run} other {# runs}} on {days, plural, one {# day} other {# days}}",
+      "sentimentLine": " · sentiment in mentioning answers: {positive} positive, {neutral} neutral, {negative} negative",
+      "sentimentUnavailableTail": ", {count} unavailable",
+      "moreDays": "Show {count} more days",
+      "platformsAnswered": "{count, plural, one {# platform} other {# platforms}} answered"
+    },
+    "bulkImport": {
+      "intro": "Put your prompts in <b>one column</b>, one prompt per row, going down. A first row titled <b>Prompt</b> is read as the header (optional). Imported prompts use the platforms selected under Single and the brand's location; set each one's topic and location afterwards with Edit in All Prompts.",
+      "drop": "Drop an .xlsx or .csv file, or click to browse",
+      "perRow": "One prompt per row · up to {max} rows",
+      "template": "Download template",
+      "chooseFile": "Choose an .xlsx or .csv file.",
+      "unreadable": "This file could not be read. Check that it is a valid .xlsx or .csv file.",
+      "counts": "<b>{valid} valid</b> · {duplicates, plural, one {# duplicate} other {# duplicates}} · {errors, plural, one {# error} other {# errors}}",
+      "inUse": "· {used} / {max} prompt locations in use",
+      "truncated": "Only the first {max} rows were read; {more} more were left out. Split larger files.",
+      "extraColumns": "Only the prompt column is read; the file's other columns were ignored.",
+      "noneImportable": "No prompts can be imported. Your {plan} plan tracks up to {max} prompt locations and {used} are already in use.",
+      "someImportable": "Only {valid} of {total} prompts will be imported. Your {plan} plan tracks up to {max} prompt locations and {used} are already in use. The remaining {count, plural, one {# prompt} other {# prompts}} (from row {row}) won't be imported.",
+      "toAddMore": "To add more prompts, {starter, select, yes {upgrade your plan} other {contact us}}.",
+      "head": {
+        "row": "Row",
+        "prompt": "Prompt",
+        "status": "Status"
+      },
+      "status": {
+        "valid": "Valid",
+        "duplicate": "Duplicate",
+        "error": "Error",
+        "over_limit": "Over plan limit"
+      },
+      "reason": {
+        "empty": "Empty prompt",
+        "tooLong": "Longer than {max} characters",
+        "duplicate": "Already tracked or repeated in the file"
+      },
+      "downloadNotImported": "Download not-imported prompts (.csv)",
+      "downloadErrors": "Download errors (.csv)",
+      "importButton": "Import {count, plural, one {# prompt} other {# prompts}}",
+      "importedSome": "{imported} imported · {notImported} not imported due to plan limit",
+      "importedAll": "{count, plural, one {# prompt imported} other {# prompts imported}}",
+      "analyzing": "Analyzing them now. Set topics and locations with Edit in All Prompts.",
+      "nextRun": "They will be picked up by the next tracking run.",
+      "failed": "Import failed. Please try again."
+    },
+    "workStatus": {
+      "todo": "To do",
+      "in_progress": "In progress",
+      "done": "Done",
+      "set": "Set status",
+      "setLabel": "Set work status",
+      "none": "No status"
+    },
+    "detail": {
+      "presets": {
+        "24h": "24h",
+        "7d": "7d",
+        "30d": "30d",
+        "90d": "90d"
+      },
+      "unknownModel": "Unknown",
+      "sentiment": {
+        "positive": "positive",
+        "neutral": "neutral",
+        "negative": "negative"
+      },
+      "active": "Active",
+      "paused": "Paused",
+      "lastRun": "Last run: {time}",
+      "loadFailed": "Failed to load prompt detail",
+      "errorTitle": "Couldn't load this prompt",
+      "retry": "Retry",
+      "notFoundTitle": "Prompt not found",
+      "notFoundBody": "This prompt may have been deleted or does not exist.",
+      "goBack": "Go back",
+      "statusUpdateFailed": "Failed to update status",
+      "opportunitiesLoadFailed": "Failed to load content opportunities",
+      "kpi": {
+        "visibility": "Visibility — mentioned in {mentioned} of {total, plural, one {# answer} other {# answers}}, cited in {cited}",
+        "mentions": "Mentions",
+        "citations": "Citations"
+      },
+      "results": {
+        "title": "Platform Results",
+        "summary": "{count, plural, one {# result} other {# results}} grouped by platform and model.",
+        "empty": "No tracking results yet for this prompt.",
+        "emptyRange": "No results in the selected date range.",
+        "showAll": "Show all data"
+      },
+      "group": {
+        "runs": "{count, plural, one {# run} other {# runs}}",
+        "mentions": "Mentions",
+        "citations": "Citations",
+        "runsHeading": "Runs",
+        "mentionCount": "{count, plural, one {<n>#</n><l> mention</l>} other {<n>#</n><l> mentions</l>}}",
+        "citationCount": "{count, plural, one {<n>#</n><l> citation</l>} other {<n>#</n><l> citations</l>}}",
+        "showResponse": "Show response",
+        "hideResponse": "Hide response",
+        "openFullPage": "Open full page",
+        "showingLatest": "Showing latest {shown} of {total, plural, one {# run} other {# runs}} for this platform."
+      },
+      "sources": {
+        "title": "Top Sources",
+        "description": "Sources AI platforms cite when answering this prompt.",
+        "filterPlaceholder": "Filter by domain, URL or title...",
+        "domainsTab": "Domains ({count})",
+        "urlsTab": "URLs ({count})",
+        "rank": "Rank",
+        "domain": "Domain",
+        "url": "URL",
+        "platforms": "Platforms",
+        "usage": "Usage",
+        "citations": "Citations",
+        "openDomain": "Open {domain} in a new tab",
+        "openCitedPage": "Open cited page in a new tab",
+        "openCitedPageTitle": "Open cited page"
+      },
+      "notes": {
+        "title": "Notes",
+        "description": "Keep track of the work behind this prompt — what was published, planned or decided.",
+        "placeholder": "e.g. Published a comparison blog post targeting this prompt…",
+        "add": "Add note",
+        "empty": "No notes yet — add the first one above.",
+        "emptyReadOnly": "No notes yet.",
+        "unknownAuthor": "Unknown",
+        "delete": "Delete note",
+        "addFailed": "Failed to add note",
+        "deleteFailed": "Failed to delete note"
+      },
+      "targets": {
+        "title": "Target URLs",
+        "description": "Pages you want AI answers to cite for this prompt. Citation status updates automatically as new tracking results arrive.",
+        "add": "Add",
+        "empty": "No target URLs yet — add the pages you want cited.",
+        "emptyReadOnly": "No target URLs yet.",
+        "remove": "Remove target URL",
+        "addFailed": "Failed to add URL",
+        "removeFailed": "Failed to remove URL",
+        "notCited": "Not cited yet",
+        "cited": "Cited ×{count}",
+        "citedIn": "{count, plural, one {Cited in # answer} other {Cited in # answers}}",
+        "first": "first {date}",
+        "last": "last {date}",
+        "alreadyCited": "was already cited before targeting"
+      },
+      "opportunities": {
+        "title": "Content opportunities",
+        "description": "Opportunities identified for this prompt that are waiting for action.",
+        "loadFailed": "Content opportunities couldn't be loaded.",
+        "empty": "No open opportunities for this prompt.",
+        "briefReady": "Brief ready",
+        "viewAll": "View all {total}"
+      }
     }
   },
   "volumeEstimate": {
@@ -18380,6 +18682,7 @@
           "nextTag": "· next"
         },
         "unit": "<b>1 slot</b> = 1 prompt tracked in 1 location on that platform, every day.",
+        "unitInfo": "What is a slot?",
         "columns": {
           "platform": "Platform",
           "included": "In your plan",
@@ -18426,6 +18729,7 @@
       },
       "summary": "{prompts} prompt locations · {brands} brands",
       "review": "Review and pay",
+      "reviewPrice": "Review and pay {price}",
       "reviewing": "Checking the price…",
       "dialog": {
         "title": "Review your add-ons",
@@ -18477,6 +18781,7 @@
         "title": "Your add-ons",
         "onePayment": "One payment",
         "plan": "{plan} plan",
+        "planSub": "Already in your subscription · no change",
         "slots": "{platform} extra tracking",
         "slotsCount": "{slots} slots",
         "remove": "Remove {item}",
@@ -18486,7 +18791,8 @@
         "topUp": "{multiplier}x AI usage · until {date}",
         "total": "{interval, select, year {Yearly} other {Monthly}} total from the next renewal <b>{price}</b>",
         "undoAll": "Undo all changes",
-        "dueToday": "Due today: the added items for the rest of this period, shown on Review and pay."
+        "dueToday": "Due today: the added items for the rest of this period, shown on Review and pay.",
+        "dueTodayAmount": "Due today: <b>{price}</b> for the added items, for the rest of this period."
       }
     },
     "cancelsOn": "Subscription ends on {date}",
