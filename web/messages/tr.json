@@ -1261,6 +1261,9 @@
         "goal_reached": "Hedefe Ulaşıldı"
       },
       "pointsChange": "{value} puan",
+      "notes": {
+        "no_revenue": "Google Analytics gelir bildirmedi; bunun için e-ticaret izlemesi gerekir"
+      },
       "score": "{value}/100",
       "vsGoalAria": "Hedefin %{progress}'i",
       "editKpis": "KPI'ları Düzenle",
@@ -1336,6 +1339,7 @@
       "targetAria": "{name} hedefi",
       "invalidTarget": "Hedefler pozitif olmalıdır; yüzde ve skor hedefleri 100'ü aşamaz.",
       "scoreSuffix": "/100",
+      "needsGa": "Google Analytics gerekir",
       "callout": {
         "title": "Bu KPI çerçevesi Aksiyon Merkezi'nizi yönlendirecektir.",
         "description": "Eylemler ve öneriler KPI hedeflerinize göre önceliklendirilir."
@@ -1366,6 +1370,14 @@
       "ai_referral_traffic": {
         "name": "AI Yönlendirme Trafiği",
         "description": "AI platformlarından gelen ziyaretler"
+      },
+      "ai_conversions": {
+        "name": "AI Dönüşümleri",
+        "description": "AI kaynaklı oturumlardaki önemli etkinlikler (Google Analytics)"
+      },
+      "ai_revenue": {
+        "name": "AI Geliri",
+        "description": "AI kaynaklı oturumlardan gelen gelir (Google Analytics)"
       },
       "positive_sentiment": {
         "name": "Olumlu Yaklaşım",
